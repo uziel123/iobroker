@@ -1,0 +1,185 @@
+<html>
+
+<!-- these 4 files always have to be included -->
+<link rel="stylesheet" type="text/css" href="../../lib/css/themes/jquery-ui/redmond/jquery-ui.min.css"/>
+<script type="text/javascript" src="../../lib/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+<script type="text/javascript" src="../../lib/js/jquery-ui-1.10.3.full.min.js"></script>
+
+<!-- these two file always have to be included -->
+<link rel="stylesheet" type="text/css" href="../../css/adapter.css"/>
+<script type="text/javascript" src="../../js/translate.js"></script>
+<script type="text/javascript" src="../../js/adapter-settings.js"></script>
+
+<style>
+    .table_header {
+        background-color: blue;
+        color: white;
+    }
+    .ip {
+        width: 150px;
+        text-align: right;
+    }
+</style>
+<!-- you have to define 2 functions in the global scope: -->
+<script type="text/javascript">
+    var devices = [];
+
+    systemDictionary = {
+        "node-red settings": {
+            "en": "node-red settings",
+            "de": "node-red Einstellungen",
+            "ru": "node-red Настройки"
+        },
+        "Web server port:": {
+            "en": "Web server port:",
+            "de": "Web-Server-Port:",
+            "ru": "Порт веб сервера:"
+        },
+        "node-red update select dialog": {
+            "en": "node-red update select dialog",
+            "de": "node-red SelectID Dialog aktualisieren",
+            "ru": "Обновить переменные в диалоге node-red"
+        },
+        "Update select dialog": {
+            "en": "Update select dialog",
+            "de": "Update Dialog um ID zu selektieren",
+            "ru": "Обновить переменные в диалоге выбора объектов"
+        },
+        "Divided by comma": {
+            "en": "Divided by comma",
+            "de": "Getrennt mit Komma",
+            "ru": "Через запятую"
+        },
+        "Additional npm modules:": {
+            "en": "Additional npm modules:",
+            "de": "Zusätzliche NPM-Module",
+            "ru": "Дополнительные NPM Модули:"
+        },
+        "http root directory:": {
+            "en": "http root directory:",
+            "de": "http Stammpfad:",
+            "ru": "http root directory:"
+        },
+		"Convert values to string:":{
+			"en": "Convert ioBroker values to string:",
+			"de": "ioBroker-Werte in String konvertieren:",
+			"ru": "Конвертировать значения из ioBroker в строки:"
+		}
+    };
+
+    function setValue(id, value, onChange) {
+        // example: select elements with id=key and class=value and insert value
+        if ($('#' + id + '.value').attr('type') == 'checkbox') {
+            $('#' + id + '.value').prop('checked', value).change(function() {
+                onChange();
+            });
+        } else {
+            $('#' + id + '.value').val(value).change(function() {
+                onChange();
+            }).keyup(function() {
+                // Chack that only numbers entered
+                if ($(this).hasClass('number')) {
+                    var val = $(this).val();
+                    if (val) {
+                        var newVal = '';
+                        for (var i = 0; i < val.length; i++) {
+                            if (val[i] >= '0' && val[i] <= '9') {
+                                newVal += val[i];
+                            }
+                        }
+
+                        if (val != newVal) $(this).val(newVal);
+                    }
+                }
+
+                onChange();
+            });
+        }
+    }
+
+    // the function loadSettings has to exist ...
+    function load(settings, onChange) {
+        if (!settings) return;
+
+        devices = settings.devices || [];
+
+        for (var key in settings) {
+            setValue(key, settings[key], onChange);
+        }
+        $('#update').button().click(function () {
+            sendTo(null, 'update', null, function (error) {
+                if (!error) {
+                    showMessage(_('Successfully updated'))
+                } else {
+                    showMessage(_('Cannot update:') + _(error))
+                }
+            });
+        });
+
+        if (common.npmLibs){
+            $('#libraries').val(common.npmLibs.join(', '));
+        }
+                 
+        $('#libraries').change(function () {
+            onChange();
+        }).keyup(function () {
+            $(this).trigger('change');
+        });
+
+        getIsAdapterAlive(function (isAlive) {
+            if (!isAlive) $('#update').button("disable");
+        });
+        onChange(false);
+    }
+
+    // ... and the function save has to exist.
+    // you have to make sure the callback is called with the settings object as first param!
+    function save(callback) {
+        // example: select elements with class=value and build settings object
+        var obj = {};
+        $('.value').each(function () {
+            var $this = $(this);
+            if ($this.attr('type') == 'checkbox') {
+                obj[$this.attr('id')] = $this.prop('checked');
+            } else {
+                obj[$this.attr('id')] = $this.val();
+            }
+        });
+
+        var libs = $('#libraries').val().split(',');
+        var common = {npmLibs: []};
+        for (var l = 0; l < libs.length; l++) {
+            common.npmLibs.push(libs[l].trim());
+        }
+
+        callback(obj, {localLink: 'http://%ip%:' + obj.port, npmLibs: common.npmLibs});
+    }
+</script>
+
+<!-- you have to put your config page in a div with id adapter-container -->
+<div id="adapter-container">
+
+    <table><tr>
+        <td><img src="node-red.png" width="64" height="64"></td>
+        <td style="padding-top: 20px;padding-left: 10px"><h3 class="translate">node-red adapter settings</h3></td>
+    </tr></table>
+
+    <h4 class="translate">node-red settings</h4>
+    <table>
+        <tr><td class="translate">Web server port:</td><td colspan="2"><input class="value number" id="port" type="input" size="5"/></td></tr>
+        <tr>
+            <td class="translate">Additional npm modules:</td><td><input id="libraries" class="value" style="width: 100%"/></td><td class="translate">Divided by comma</td>
+        </tr>
+        <tr>
+            <td class="translate">http root directory:</td><td><input id="httpRoot" class="value" style="width: 100%"/></td>
+        </tr>
+		<tr>
+			<td class="translate">Convert values to string:</td><td> <input  class="value" id="valueConvert" type="checkbox" /></td>
+		</tr>
+    </table>
+    <h4 class="translate">node-red update select dialog</h4>
+    <button id="update" class="translateB">Update select dialog</button>
+
+</div>
+</html>

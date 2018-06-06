@@ -1,0 +1,96 @@
+2018-06-03 12:13:37.978  - [32minfo[39m: host.iobroker-Default-string iobroker.js-controller version 1.4.2 js-controller starting
+2018-06-03 12:13:37.982  - [32minfo[39m: host.iobroker-Default-string Copyright (c) 2014-2018 bluefox, 2014 hobbyquaker
+2018-06-03 12:13:37.983  - [32minfo[39m: host.iobroker-Default-string hostname: iobroker-Default-string, node: v8.11.2
+2018-06-03 12:13:37.985  - [32minfo[39m: host.iobroker-Default-string ip addresses: 
+2018-06-03 12:13:38.076  - [32minfo[39m: host.iobroker-Default-string  inMem-states listening on port 9000
+2018-06-03 12:13:38.188  - [32minfo[39m: host.iobroker-Default-string  inMem-objects listening on port 9001
+2018-06-03 12:13:38.204  - [32minfo[39m: host.iobroker-Default-string InMemoryDB connected
+2018-06-03 12:13:38.215  - [32minfo[39m: host.iobroker-Default-string 29 instances found
+2018-06-03 12:13:38.228  - [32minfo[39m: host.iobroker-Default-string starting 25 instances
+2018-06-03 12:13:38.292  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.admin.0 started with pid 1224
+2018-06-03 12:13:40.566  - [32minfo[39m: admin.0 starting. Version 3.3.5 in /opt/iobroker/node_modules/iobroker.admin, node: v8.11.2
+2018-06-03 12:13:40.675  - [32minfo[39m: admin.0 requesting all states
+2018-06-03 12:13:40.678  - [32minfo[39m: admin.0 requesting all objects
+2018-06-03 12:13:40.932  - [32minfo[39m: admin.0 Request actual repository...
+2018-06-03 12:13:41.018  - [32minfo[39m: admin.0 received all states
+2018-06-03 12:13:41.178  - [32minfo[39m: admin.0 received all objects
+2018-06-03 12:13:41.631  - [32minfo[39m: admin.0 https server listening on port 8081
+2018-06-03 12:13:41.631  - [32minfo[39m: admin.0 Use link "https://localhost:8081" to configure.
+2018-06-03 12:13:41.725  - [32minfo[39m: host.iobroker-Default-string Update repository "default" under "http://download.iobroker.net/sources-dist.json"
+2018-06-03 12:13:42.238  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.web.0 started with pid 1918
+2018-06-03 12:13:43.203  - [32minfo[39m: web.0 starting. Version 2.3.2 in /opt/iobroker/node_modules/iobroker.web, node: v8.11.2
+2018-06-03 12:13:43.532  - [32minfo[39m: web.0 socket.io server listening on port 8082
+2018-06-03 12:13:43.534  - [32minfo[39m: web.0 http server listening on port 8082
+2018-06-03 12:13:47.043  - [32minfo[39m: vis.0 starting. Version 1.1.4 in /opt/iobroker/node_modules/iobroker.vis, node: v8.11.2
+2018-06-03 12:13:47.692  - [32minfo[39m: vis.0 vis license is OK.
+2018-06-03 12:13:48.352  - [32minfo[39m: web.0  Connected system.user.admin from ::1
+2018-06-03 12:13:48.357  - [32minfo[39m: admin.0 Repository received successfully.
+2018-06-03 12:13:50.239  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.node-red.0 started with pid 1940
+2018-06-03 12:13:50.258  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.vis.0 terminated while should be started once
+2018-06-03 12:13:50.955  - [32minfo[39m: node-red.0 starting. Version 1.5.1 in /opt/iobroker/node_modules/iobroker.node-red, node: v8.11.2
+2018-06-03 12:13:51.018  - [32minfo[39m: node-red.0 Starting node-red: --max-old-space-size=128 /opt/iobroker/node_modules/node-red/red.js -v --settings /opt/iobroker/iobroker-data/node-red/settings.js
+2018-06-03 12:13:52.218  - [32minfo[39m: host.iobroker-Default-string received SIGTERM
+2018-06-03 12:13:52.223  - [32minfo[39m: admin.0 terminating https server on port 8081
+2018-06-03 12:13:52.230  - [32minfo[39m: node-red.0 kill node-red task
+2018-06-03 12:13:52.227  - [32minfo[39m: web.0 terminating http server on port 8082
+2018-06-03 12:13:52.228  - [32minfo[39m: web.0 terminated http server on port 8082
+2018-06-03 12:13:52.220  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.admin.0
+2018-06-03 12:13:52.220  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.admin.0 killing pid 1224
+2018-06-03 12:13:52.225  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.web.0
+2018-06-03 12:13:52.225  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.web.0 killing pid 1918
+2018-06-03 12:13:52.225  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis.0
+2018-06-03 12:13:52.226  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.node-red.0
+2018-06-03 12:13:52.227  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.history.0
+2018-06-03 12:13:52.227  - [33mwarn[39m: host.iobroker-Default-string stopInstance system.adapter.history.0 not running
+2018-06-03 12:13:52.227  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.fullcalendar.0
+2018-06-03 12:13:52.227  - [33mwarn[39m: host.iobroker-Default-string stopInstance system.adapter.fullcalendar.0 not running
+2018-06-03 12:13:52.227  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.email.0
+2018-06-03 12:13:52.228  - [33mwarn[39m: host.iobroker-Default-string stopInstance system.adapter.email.0 not running
+2018-06-03 12:13:52.228  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.modbus.0
+2018-06-03 12:13:52.228  - [33mwarn[39m: host.iobroker-Default-string stopInstance system.adapter.modbus.0 not running
+2018-06-03 12:13:52.228  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.mqtt.0
+2018-06-03 12:13:52.228  - [33mwarn[39m: host.iobroker-Default-string stopInstance system.adapter.mqtt.0 not running
+2018-06-03 12:13:52.228  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.ble.0
+2018-06-03 12:13:52.228  - [33mwarn[39m: host.iobroker-Default-string stopInstance system.adapter.ble.0 not running
+2018-06-03 12:13:52.228  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.sql.0
+2018-06-03 12:13:52.229  - [33mwarn[39m: host.iobroker-Default-string stopInstance system.adapter.sql.0 not running
+2018-06-03 12:13:52.229  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-bars.0
+2018-06-03 12:13:52.229  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-colorpicker.0
+2018-06-03 12:13:52.229  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-keyboard.0
+2018-06-03 12:13:52.229  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-hqwidgets.0
+2018-06-03 12:13:52.229  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-google-fonts.0
+2018-06-03 12:13:52.229  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-fancyswitch.0
+2018-06-03 12:13:52.229  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-justgage.0
+2018-06-03 12:13:52.230  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-lcars.0
+2018-06-03 12:13:52.230  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-jqui-mfd.0
+2018-06-03 12:13:52.230  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-canvas-gauges.0
+2018-06-03 12:13:52.230  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-history.0
+2018-06-03 12:13:52.230  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-map.0
+2018-06-03 12:13:52.230  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-metro.0
+2018-06-03 12:13:52.230  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-plumb.0
+2018-06-03 12:13:52.230  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-weather.0
+2018-06-03 12:13:52.231  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-rgraph.0
+2018-06-03 12:13:52.231  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-timeandweather.0
+2018-06-03 12:13:52.231  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.vis-players.0
+2018-06-03 12:13:52.233  - [32minfo[39m: admin.0 terminating
+2018-06-03 12:13:52.239  - [32minfo[39m: node-red.0 node-red exited with null
+2018-06-03 12:13:52.251  - [32minfo[39m: web.0 terminating
+2018-06-03 12:13:52.264  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.admin.0 terminated with code 0 (OK)
+2018-06-03 12:13:52.265  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.web.0 terminated with code 0 (OK)
+2018-06-03 12:13:53.251  - [32minfo[39m: host.iobroker-Default-string stopInstance timeout "1000 system.adapter.node-red.0 killing pid  1940
+2018-06-03 12:13:53.299  - [32minfo[39m: node-red.0 terminating
+2018-06-03 12:13:53.308  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.node-red.0 terminated with code 0 (OK)
+2018-06-03 12:13:53.308  - [32minfo[39m: host.iobroker-Default-string All instances are stopped.
+2018-06-03 12:13:53.453  - [32minfo[39m: host.iobroker-Default-string terminated
+2018-06-03 12:13:54.239  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.history.0 started with pid 2030
+2018-06-03 12:13:59.085  - [31merror[39m: history.0 uncaught exception: adapter.unsubscribeForeignStates is not a function
+2018-06-03 12:13:59.093  - [31merror[39m: history.0 TypeError: adapter.unsubscribeForeignStates is not a function
+    at finish (/opt/iobroker/node_modules/iobroker.history/history.js:165:13)
+    at Object.unload (/opt/iobroker/node_modules/iobroker.history/history.js:110:9)
+    at process.stop (/opt/iobroker/node_modules/iobroker.js-controller/lib/adapter.js:5023:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:111:20)
+    at process.emit (events.js:208:7)
+    at Signal.wrap.onsignal (internal/process.js:208:44)
+2018-06-03 12:13:59.093  - [31merror[39m: history.0 exception by stop: adapter.unsubscribeForeignStates is not a function
+2018-06-03 12:13:59.745  - [31merror[39m: history.0 no connection to objects DB

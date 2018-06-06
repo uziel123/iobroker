@@ -1,0 +1,1051 @@
+/* ------------------------------ animations ------------------------------------*/
+@-moz-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -moz-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -moz-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+    60% {
+        -moz-transform: translateY(-5px);
+        transform: translateY(-5px);
+    }
+}
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+    60% {
+        -webkit-transform: translateY(-5px);
+        transform: translateY(-5px);
+    }
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -moz-transform: translateY(-10px);
+        -ms-transform: translateY(-10px);
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+    60% {
+        -moz-transform: translateY(-5px);
+        -ms-transform: translateY(-5px);
+        -webkit-transform: translateY(-5px);
+        transform: translateY(-5px);
+    }
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+@keyframes blinker {
+    0%, 40%, 60%, 100% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+}
+
+/* --------------------------- end of animations -------------------------------------------*/
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans'), url(OpenSans-Regular.ttf) format('ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans'), url(OpenSans-Italic.ttf) format('ttf');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Open Sans'), local('OpenSans'), url(OpenSans-Bold.ttf) format('ttf');
+}
+
+body,
+input,
+select,
+textarea,
+button,
+.ui-btn {
+    font-family: "Open Sans", sans-serif;
+}
+
+@media only screen and (min-width: 800px){
+    .ui-content {
+        text-align:  center;
+    }
+    .ui-content {
+        max-width: 400px !important;
+    }
+}
+/* Eingabefeld neben Slider ausblenden */
+input.ui-slider-input {
+    display : none !important;
+}
+
+/* Slider wegen ausgeblendetem Eingabefeld nach links rutschen */
+.ui-slider-track {
+    margin-left: 16px;
+}
+
+.mobile-page-left {
+    display: none;
+}
+
+/* a, b und c mit voller breite und untereinander */
+.mobile-page .ui-li-has-thumb {
+    padding-left:  10px !important;
+    padding-right: 35px !important;
+}
+
+.mobile-page .ui-li-has-thumb img.ui-li-thumb {
+    display:none;
+}
+
+.mobile-widget-table-icon, .mobile-widget-icon {
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.mobile-widget-icon {
+    display: inline-block;
+    vertical-align: bottom;
+    padding-right: 5px;
+}
+
+.mobile-widget-a {
+    display: inline-block;
+    vertical-align: middle;
+    float: left;
+    width: 100%;
+    font-size: 18px;
+    min-height: 2em;
+    overflow: hidden;
+}
+
+.mobile-widget-b {
+    display: inline-block;
+    float: left;
+    width: 100%;
+}
+
+.mobile-widget-c {
+    display: inline-block;
+    float: left;
+    width: 100%;
+    font-size: 14px;
+}
+
+.mobile-widget-bc {
+    display: inline-block;
+    float: left;
+    width: 100%;
+}
+.mobile-widget {
+    display: inline;
+}
+.rightcolumn {
+    margin-left: 0;
+}
+
+.mobile-page-left {
+    display: none;
+}
+
+.mobile-value {
+    display: inline-block;
+    float: right;
+}
+.mobile-error {
+    color: red !important;
+}
+
+.leftcolumn_collapsed {
+    display: none;
+    /*
+    transform:          rotate(90deg);
+    -ms-transform:      rotate(90deg);
+    -webkit-transform:  rotate(90deg);
+     */
+}
+
+.service-message {
+    position:relative;
+    float: right;
+    color: #fff;
+    border-radius: 19px;
+    width: 19px;
+    height: 18px;
+    padding-top:1px;
+    font-size: 0.9em;
+    font-weight: normal;
+    background-color: red;
+    text-shadow: none !important;
+}
+
+.mobile-page-left .service-message {
+    float: left;
+    border-radius: 16px;
+    width: 18px;
+    height: 18px;
+    margin-left: -24px;
+    z-index: 9999;
+    margin-top: 4px;
+}
+
+.service-message-count {
+    padding-left: 5px;
+}
+
+.service-message {
+    margin-right: 40px;
+}
+
+/*.ui-li-thumb {
+    display: none;
+}
+
+.ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
+    padding-left: 10px !important;
+}*/
+
+/* erster breakpoint bei 400px*/
+@media all and (min-width: 400px){
+
+    .ui-li-thumb {
+        display: block;
+    }
+
+    .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
+        padding-left: 80px !important;
+    }
+}
+
+/* zweiter breakpoint bei 768px (iPad hochformat). 3 spaltiges layout.  */
+@media all and (min-width: 768px){
+
+    .service-message {
+        position: absolute;
+        margin-left: 211px;
+    }
+
+    .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
+        padding-left: 0px !important;
+    }
+
+    .mobile-page-left {
+        display: block;
+    }
+
+    .mobile-page-left .ui-li-has-thumb {
+        padding-left:80px !important;
+        padding-right:15px !important;
+    }
+
+    .mobile-page-left .ui-li-thumb {
+        margin-left:-80px !important;
+        display: block;
+    }
+
+    .mobile-page .ui-li-has-thumb {
+        padding-left:80px !important;
+        padding-right:15px !important;
+    }
+
+    .mobile-page .ui-li-has-thumb img.ui-li-thumb {
+        display:inline;
+    }
+
+    .mobile-page .ui-li-has-thumb {
+        padding-left:80px !important;
+        padding-right:25px !important;
+    }
+
+    /* a und b nebeneinander, c mit voller breite drunter */
+    .mobile-a {
+        width: 40%;
+    }
+
+    .mobile-b {
+        width: 60%;
+    }
+
+    .mobile-c {
+        width: 100%;
+    }
+
+    .mobile-bc {
+        width: 60%;
+    }
+
+    .responsive-grid .ui-content {
+        padding: 9px;
+    }
+
+    .responsive-grid .ui-listview .ui-li.ui-btn {
+        float: left;
+        width: 30.9333%; /* 33.3333% incl. 2 x 1.2% margin */
+        height: 232px;
+        margin: 9px 1.2%;
+        border-width: 0; /* The 1px border would break the layout so we set it on .ui-btn-inner instead. */
+    }
+
+    /* If you don't want a border at all, just set "border: none;" here to negate the semi white top border */
+    .responsive-grid .ui-listview .ui-li.ui-btn-inner {
+        border: inherit;
+        border-width: 1px;
+        margin: -1px;
+    }
+
+    .responsive-grid .ui-listview .ui-btn-inner,
+    .responsive-grid .ui-listview .ui-btn-text,
+    .responsive-grid .ui-listview .ui-link-inherit,
+    .responsive-grid .ui-listview .ui-li-thumb {
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: hidden;
+    }
+
+    .responsive-grid .ui-listview .ui-link-inherit {
+        padding: 0 !important;
+        position: relative;
+    }
+
+    /* Inherit the border-radius from the UL that has class .ui-corner-all in case of an inset listview. */
+    .responsive-grid .ui-listview .ui-li,
+    .responsive-grid .ui-listview .ui-btn-text,
+    .responsive-grid .ui-listview .ui-link-inherit,
+    .responsive-grid .ui-listview .ui-li-thumb {
+        -webkit-border-radius: inherit;
+        border-radius: inherit;
+    }
+
+    .responsive-grid .ui-listview .ui-li-thumb {
+        height: auto; /* To keep aspect ratio. */
+        max-width: 100%;
+        max-height: none;
+        margin: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    /* Hide the icon */
+    .responsive-grid .ui-listview .ui-icon {
+        display: none;
+    }
+
+    /* Make text wrap. */
+    .responsive-grid .ui-listview .ui-li-heading,
+    .responsive-grid .ui-listview .ui-li-desc {
+        white-space: normal;
+        overflow: visible;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+
+    /* Text position */
+    .responsive-grid .ui-listview .ui-li-heading {
+        margin: 0;
+        padding: 20px;
+        bottom: 50%;
+    }
+
+    .responsive-grid .ui-listview .ui-li-desc {
+        margin: 0;
+        padding: 0 20px;
+        min-height: 50%;
+        bottom: 0;
+        line-height: 1.5;
+    }
+
+    /* Semi transparent background and different position if there is a thumb */
+    .responsive-grid .ui-listview .ui-li-has-thumb .ui-li-heading,
+    .responsive-grid .ui-listview .ui-li-has-thumb .ui-li-desc {
+        background: #eee;
+        background: rgba(255,255,255,.7);
+        -webkit-background-clip: padding;
+        background-clip: padding-box;
+    }
+
+    .responsive-grid .ui-listview .ui-li-has-thumb .ui-li-heading {
+        padding: 10px;
+        bottom: 20%;
+    }
+
+    .responsive-grid .ui-listview .ui-li-has-thumb .ui-li-desc {
+        padding: 0 10px;
+        min-height: 20%;
+        -webkit-border-bottom-left-radius: inherit;
+        border-bottom-left-radius: inherit;
+        -webkit-border-bottom-right-radius: inherit;
+        border-bottom-right-radius: inherit;
+    }
+
+    /* ui-li-aside has class .ui-li-desc as well so we have to override some things. */
+    .responsive-grid .ui-listview .ui-li-desc.ui-li-aside {
+        padding: 2px 10px;
+        width: auto;
+        min-height: 0;
+        top: 0;
+        left: auto;
+        bottom: auto;
+        text-shadow: none;
+        font-size: 14px;
+    }
+
+    /* If you want to add shadow, don't kill the focus style. */
+    .responsive-grid .ui-listview .ui-btn:not(.ui-focus) {
+        -moz-box-shadow: 0px 0px 9px #111;
+        -webkit-box-shadow: 0px 0px 9px #111;
+        box-shadow: 0px 0px 9px #111;
+    }
+
+    /* img mask the hover bg color so we give desktop users feedback by applying the focus style on hover as well. */
+    .responsive-grid .ui-listview .ui-btn:hover {
+        -moz-box-shadow: 0px 0px 12px #387bbe;
+        -webkit-box-shadow: 0px 0px 12px #387bbe;
+        box-shadow: 0px 0px 12px #387bbe;
+    }
+
+    /* Animate focus and hover style, and resizing. */
+    .responsive-grid .ui-listview .ui-btn {
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        -o-transition: all 500ms ease;
+        -ms-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    .rightcolumn {
+        margin-left: 295px;
+    }
+
+    .leftcolumn {
+        width: 280px;
+        padding-right: 10px;
+        float: left;
+        display: block;
+    }
+
+    .leftcolumn_collapsed {
+        float: left;
+        margin-left: -15px;
+        display: none;
+    }
+
+    .ul_list_left_collapsed {
+        position: absolute;
+        margin-top: 139px !important;
+        margin-left: -130px !important;
+        width: 280px;
+    }
+
+    .list_left_collapsed {
+        height: 300px;
+        width: 300px;
+        position: absolute;
+        margin-left: -140px;
+        margin-top: 150px;
+    }
+
+    .nopadding {
+        padding-left: 0px !important;
+    }
+}
+
+/* Dritter breakpoint. 4 spaltiges layout. iPad querformat */
+@media all and (min-width: 1020px){
+
+    .mobile-page .ui-li-has-thumb {
+        padding-left:100px !important;
+        padding-right:15px !important;
+    }
+
+    /* a, b und c nebeneinander */
+    .mobile-0 {
+        width: 30%;
+        min-height:54px;
+    }
+
+    .mobile-a {
+        width: 30%;
+        min-height:54px;
+    }
+
+    .mobile-b {
+        width: 20%;
+        margin-top:3px;
+        min-height:54px;
+    }
+
+    .mobile-c {
+        width: 45%;
+        margin-top:5px;
+        min-height:54px;
+    }
+
+    .mobile-d {
+        width: 5%;
+        display: inline;
+        float: right;
+        margin-top:5px;
+        text-align: center;
+    }
+
+    .mobile-bc {
+        width: 65%;
+        min-height:54px;
+    }
+
+    .responsive-grid .ui-content {
+        padding: 10px;
+    }
+    /* Set a max-width for the last breakpoint to prevent too much stretching on large screens.
+    By setting the max-width equal to the breakpoint width minus padding we keep square tiles. */
+    .responsive-grid .ui-listview {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    /* Because of the 1000px max-width the width will always be 230px (and margin left/right 10px) */
+    .responsive-grid .ui-listview .ui-li.ui-btn {
+        width: 23%;
+        height: 230px;
+        margin: 10px 1%;
+    }
+
+    .div_vertical {
+        font-size: 16px;
+        padding-top:15px;
+    }
+}
+
+.responsive-grid .ui-listview .ui-btn.upload-start {
+    -moz-box-shadow: 0px 0px 5px 5px orange !important;
+    -webkit-box-shadow: 0px 0px 5px 5px orange !important;
+    box-shadow: 0px 0px 5px 5px orange !important;
+}
+
+.upload-start {
+    background-color: orange;
+    background-image: none;
+}
+
+.drag-start {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    -ms-transition: none !important;
+    transition: none !important;
+}
+
+.input_inline {
+    font-size: 18px;
+}
+
+/*#edit_channel_name {
+    width: 100%;
+    display: block;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    font-weight: bold;
+}*/
+
+/*.edit_invisible {
+    opacity: 0.35;
+    display: block;
+}
+
+.invisible {
+    display: none !important;
+}*/
+
+div.mobile-slider-hue div.ui-slider div.ui-slider-track {
+    background: url(../img/hue.png) !important;
+    background-size: 100% 100% !important;
+}
+
+
+div.mobile-slider-ct div.ui-slider div.ui-slider-track {
+    background: url(../img/ct.png) !important;
+    background-size: 100% 100% !important;
+}
+
+ul.mobile-page-left h2 {
+    margin-left: 5px;
+}
+
+/*div.led16 {
+    width: 15px;
+    height: 15px;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.led16-0 {
+    background: none;
+}
+
+.led16-1 {
+    background-color: red;
+}
+
+.led16-2 {
+    background-color: green;
+}
+
+.led16-3 {
+    background-color: yellow;
+}
+*/
+
+.mobile-title {
+    padding-top: 5px;
+    font-weight: bold;
+}
+.mobile-indicators {
+    width:          90%;
+    height:         1.1em;
+    position:       absolute;
+    top:            0.3em;
+    right:          0;
+    padding-right:  1em;
+}
+.mobile-indicator, .mobile-indicator-battery, .mobile-indicator-unreach, .mobile-indicator-error, .mobile-indicator-working, .mobile-indicator-direction {
+    width:              1em;
+    height:             1em;
+    min-height:         1em;
+    background-size:    cover;
+    background-repeat:  no-repeat;
+    float:              right;
+}
+
+.mobile-indicator-battery {
+    background-image: url('../img/battery.png');
+    -webkit-animation:  blinker 4s linear infinite;
+    -moz-animation:     blinker 4s linear infinite;
+    animation:          blinker 4s linear infinite;
+}
+.mobile-indicator-unreach {
+    background-image: url('../img/unreach.png');
+}
+.mobile-indicator-error {
+    background-image: url('../img/error.png');
+}
+
+.mobile-indicator-working {
+    background-image: url('../img/gear.png');
+    -webkit-animation:  spin 4s linear infinite;
+    -moz-animation:     spin 4s linear infinite;
+    animation:          spin 4s linear infinite;
+}
+
+.mobile-indicator {
+    background-image: url('../img/error.png');
+}
+
+.mobile-indicator-direction[data-value='UP'] {
+    background-image: url('../img/up.png');
+    -moz-animation:     bounce 2s infinite;
+    -webkit-animation:  bounce 2s infinite;
+    animation:          bounce 2s infinite;
+}
+
+.mobile-indicator-direction[data-value='DOWN'] {
+    background-image: url('../img/down.png');
+    -moz-animation:     bounce 2s infinite;
+    -webkit-animation:  bounce 2s infinite;
+    animation:          bounce 2s infinite;
+}
+
+.mobile-icon-last-change {
+    width:              1.2em;
+    height:             1.2em;
+    padding-right:      0.3em;
+}
+
+.mobile-checkbox-visibility {
+    float: right !important;
+    margin: 0.7em  !important;
+    position: relative !important;
+}
+
+.mobile-edit-field {
+    float: right !important;
+    padding-right: 0.5em  !important;
+}
+
+.mobile-edit-element {
+    border-radius: .3125em;
+    position: absolute;
+    left: 0.1em;
+    right: 0.1em;
+    z-index: 10;
+    height: calc(100% - 0.2em);
+    width: calc(100% - 0.2em);
+}
+
+.mobile-edit-channel {
+    /*margin-top: -1em;*/
+    background-color: rgba(0, 0, 255, 0.5);
+    padding-bottom: 1.3em;
+}
+.mobile-invisible {
+    opacity: 0.5;
+}
+.mobile-edit-state {
+    background-color: rgba(0, 255, 0, 0.4);
+    z-index: 11;
+}
+
+.mobile-edit-enum {
+    background-color: rgba(0, 0, 255, 0.5);
+    border-radius: .3125em;
+    position: absolute;
+    z-index: 11;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.mobile-enum-visibility {
+    width:      1.1em;
+    height:     1.2em;
+    border:     1px solid gray;
+    background: white;
+    color:      black;
+    text-align: center;
+    float:      right;
+    margin:     0.7em;
+    cursor:     pointer;
+}
+.mobile-edit-subenum {
+    background-color: rgba(0, 255, 0, 0.5);
+    border-radius: .3125em;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+#edit_indicator {
+    border: 1px solid #044062;
+    box-shadow: 0 1px 0 rgba(255,255,255,.3);
+    display: none; font-weight: 700;
+    top: 8px; text-shadow: 0 1px 0 #194b7e;
+    font-family: Helvetica,Arial,sans-serif;
+    color:#fff;
+    padding:3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: fixed;
+    right: 40px;
+    background-color: orange;
+    z-index: 10000;
+    cursor: pointer;
+}
+
+.mobile-value-alone, .mobile-value-with-units {
+    float: left;
+    width: 2.5em;
+    /*display: inline-block;*/
+    word-wrap: break-word;
+    background: #3388cc;
+    text-align: center;
+    border-radius: 0.3em 0 0 0.3em;
+    margin-right: 0.5em;
+    text-shadow: 0 0 0 black  !important;
+    margin-bottom: 2px;
+    display: table;
+    padding: 2px;
+    color: white !important;
+}
+.mobile-theme-grey .mobile-value-alone, .mobile-theme-grey .mobile-value-with-units {
+    background: inherit;
+}
+.mobile-theme-light .mobile-value-alone,
+.mobile-theme-light .mobile-value-with-units {
+    background: -moz-linear-gradient(left, #3388cc 0%, #3388cc 70%, rgba(255,255,255,0) 100%) !important;
+    background: -webkit-gradient(left top, right top, color-stop(0%, #3388cc), color-stop(70%, #3388cc), color-stop(100%, rgba(255,255,255,0))) !important;
+    background: -webkit-linear-gradient(left, #3388cc 0%, #3388cc 70%, rgba(255,255,255,0) 100%) !important;
+    background: -o-linear-gradient(left, #3388cc 0%, #3388cc 70%, rgba(255,255,255,0) 100%) !important;
+    background: -ms-linear-gradient(left, #3388cc 0%, #3388cc 70%, rgba(255,255,255,0) 100%) !important;
+    background: linear-gradient(to right, #3388cc 0%, #3388cc 70%, rgba(255,255,255,0) 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3387cc', endColorstr='#ffffff', GradientType=1 ) !important;
+}
+
+.mobile-theme-default .mobile-value-alone,
+.mobile-theme-default .mobile-value-with-units {
+    background: -moz-linear-gradient(left, #2ad 0%, #2ad 70%, rgba(255,255,255,0) 100%) !important;
+    background: -webkit-gradient(left top, right top, color-stop(0%, #2ad), color-stop(70%, #2ad), color-stop(100%, rgba(255,255,255,0))) !important;
+    background: -webkit-linear-gradient(left, #2ad 0%, #2ad 70%, rgba(255,255,255,0) 100%) !important;
+    background: -o-linear-gradient(left, #2ad 0%, #2ad 70%, rgba(255,255,255,0) 100%) !important;
+    background: -ms-linear-gradient(left, #2ad 0%, #2ad 70%, rgba(255,255,255,0) 100%) !important;
+    background: linear-gradient(to right, #2ad 0%, #2ad 70%, rgba(255,255,255,0) 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3387cc', endColorstr='#ffffff', GradientType=1 ) !important;
+}
+
+.mobile-theme-grey .mobile-value-alone,
+.mobile-theme-grey .mobile-value-with-units {
+    background: inherit !important;
+    border-radius: 0 0 0 0 !important;
+    /*    background: -moz-linear-gradient(left, #2ad 0%, #2ad 70%, rgba(255,255,255,0) 100%) !important;
+        background: -webkit-gradient(left top, right top, color-stop(0%, #2ad), color-stop(70%, #2ad), color-stop(100%, rgba(255,255,255,0))) !important;
+        background: -webkit-linear-gradient(left, #2ad 0%, #2ad 70%, rgba(255,255,255,0) 100%) !important;
+        background: -o-linear-gradient(left, #2ad 0%, #2ad 70%, rgba(255,255,255,0) 100%) !important;
+        background: -ms-linear-gradient(left, #2ad 0%, #2ad 70%, rgba(255,255,255,0) 100%) !important;
+        background: linear-gradient(to right, #2ad 0%, #2ad 70%, rgba(255,255,255,0) 100%) !important;
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3387cc', endColorstr='#ffffff', GradientType=1 ) !important;
+    */}
+
+.mobile-value-alone {
+    height: 1.8em;
+    padding-top: 0.7em;
+}
+
+.mobile-value-with-units {
+    height: 2.4em;
+    padding-top: 0.1em;
+}
+.mobile-value-units {
+    font-size: smaller;
+    display: table-row;
+    color: #DEDEDE !important;
+}
+.mobile-value-group-title {
+    font-weight: bold;
+    padding-left: 0.5em;
+    padding-bottom: 0.5em;
+    display: inline-block;
+}
+
+.mobile-value-small-title {
+    padding-left: 0.5em;
+    font-size: x-small;
+}
+
+.mobile-value-title {
+}
+
+.mobile-visibility {
+    position: relative;
+}
+.mobile-visibility table {
+    /*table-layout: fixed;*/
+}
+.mobile-widget-table {
+    width: 100%;
+}
+.mobile-widget-title-normal {
+    padding-left: 0.5em;
+}
+.mobile-widget-title-small {
+    font-size: small;
+}
+
+.mobile-widget-table, .mobile-widget-table tr, .mobile-widget-table td {
+    border: 0;
+    border-spacing: 0;
+    border-collapse: separate;
+}
+
+.mobile-widget-table-begin {
+    width: 2.5em;
+}
+.mobile-widget-table-end {
+    width: 100%;
+}
+.mobile-widget-icon-floating {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /*background: white;*/
+}
+
+.mobile-widget-table-control {
+    border-top:    1px solid #E0DEDE !important;
+    border-bottom: 1px solid #E0DEDE !important;
+}
+.mobile-value-big {
+    padding-top: 0.5em !important;
+    height: 3.2em !important;
+}
+.mobile-edit-name, .mobile-edit-icon {
+    /*margin-left: 1em !important;*/
+    float: right;
+}
+.mobile-widget-b li, .mobile-widget-b ul{
+    list-style-type: none;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.mobile-widget-a ul {
+    list-style: none;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.mobile-edit-sort {
+    background: none !important;
+    border: 0 !important;
+    opacity: 0.5;
+}
+.mobile-widget-last-change{
+    font-size: xx-small;
+    opacity: 0.8;
+    padding-left: 1em;
+}
+.mobile-version {
+    position: absolute;
+    top: 0.7em;
+    right: 1em;
+}
+
+/* ------------------ connecting -------------------------- */
+#server-disconnect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-color: rgba(231,231,231,1) !important;
+    background-size: 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    z-index: 5000;
+}
+
+#server-disconnect > * {
+    /* center child divs  */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* x-border-box */
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    /* x-unselectable */
+    user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    cursor: default;
+}
+.splash-screen-circle-outer {
+    z-index: 20000;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    border: 5px solid rgba(87, 113, 145, 0.9);
+    opacity: .9;
+    border-right: 5px solid rgba(0, 0, 0, 0);
+    border-left: 5px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 0 35px #577191;
+    -moz-animation: spinPulse 5s infinite ease-in-out;
+    -webkit-animation: spinPulse 5s infinite linear;
+}
+.splash-screen-circle-inner {
+    z-index: 20001;
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    margin-top: -40px;
+    margin-left: -40px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 5px solid rgba(87, 113, 145, 0.9);
+    opacity: .9;
+    border-left: 5px solid rgba(0, 0, 0, 0);
+    border-right: 5px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 0 15px #577191;
+    -moz-animation: spinoffPulse 5s infinite linear;
+    -webkit-animation: spinoffPulse 5s infinite linear;
+}
+.splash-screen-text {
+    z-index: 20002;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 13px;
+    text-align: center;
+    text-shadow: 1px 1px #cccccc;
+    vertical-align: middle;
+    color: #002951;
+}
+@-moz-keyframes spinPulse {
+    0% {
+        -moz-transform: rotate(160deg);
+        opacity: 0;
+        box-shadow: 0 0 1px #577191;
+    }
+    50% {
+        -moz-transform: rotate(145deg);
+        opacity: 1;
+    }
+    100% {
+        -moz-transform: rotate(-320deg);
+        opacity: 0;
+    }
+}
+@-moz-keyframes spinoffPulse {
+    0% {
+        -moz-transform: rotate(0deg);
+    }
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spinPulse {
+    0% {
+        -webkit-transform: rotate(160deg);
+        opacity: 0;
+        box-shadow: 0 0 1px #577191;
+    }
+    50% {
+        -webkit-transform: rotate(145deg);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: rotate(-320deg);
+        opacity: 0;
+    }
+}
+@-webkit-keyframes spinoffPulse {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+

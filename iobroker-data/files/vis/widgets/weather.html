@@ -1,0 +1,755 @@
+﻿<!--
+    ioBroker.vis weather Widget-Set
+
+
+    Copyright 10.2015-2016 René G. <info@rg-engineering.eu>
+-->
+<!-- here you can include so many css as you want -->
+<!--<link rel="stylesheet" href="widgets/weather/css/style.css" />-->
+<!--<link href="widgets/weather/css/flot.css" rel="stylesheet" type="text/css">-->
+
+<script type="text/javascript" src="widgets/weather/lib/js/flot/jquery.flot.js"></script>
+<script type="text/javascript" src="widgets/weather/lib/js/flot/jquery.flot.time.js"></script>
+
+<!-- doku for flot : -->
+<!--  https://github.com/flot/flot/blob/master/API.md -->
+
+
+<script type="text/javascript">
+    'use strict';
+
+    if (vis.editMode) {
+        // Add words for basic widgets
+        $.extend(true, systemDictionary, {
+            //            "format_date": { "en": "Dateformat", "de": "Datumformat", "ru": "?????? ????" },
+            //            "format_date_tooltip": {"en": "Dateformat","de": "Datumformat","ru": "?????? ????"},
+            "weather": { "en": "weather", "de": "Wetter", "ru": "weather" },
+            "1 second": { "en": "1 second", "de": "1 Sekunde", "ru": "1 ???????" },
+            "10 seconds": { "en": "10 seconds", "de": "10 Sekunden", "ru": "10 ??????" },
+            "30 seconds": { "en": "30 seconds", "de": "30 Sekunden", "ru": "30 ??????" },
+            "1 minute": { "en": "1 minute", "de": "1 Minute", "ru": "1 ??????" },
+            "2 minutes": { "en": "2 minutes", "de": "2 Minuten", "ru": "2 ??????" },
+            "5 minutes": { "en": "5 minutes", "de": "5 Minuten", "ru": "5 ?????" },
+            "10 minutes": { "en": "10 minutes", "de": "10 Minuten", "ru": "10 ?????" },
+            "30 minutes": { "en": "30 minutes", "de": "30 Minuten", "ru": "30 ?????" },
+            "1 hour": { "en": "1 hour", "de": "1 Stunde", "ru": "1 ???" },
+            "2 hours": { "en": "2 hours", "de": "2 Stunden", "ru": "2 ????" },
+            "4 hours": { "en": "4 hours", "de": "4 Stunden", "ru": "4 ????" },
+            "8 hours": { "en": "8 hours", "de": "8 Stunden", "ru": "8 ?????" },
+            "12 hours": { "en": "12 hours", "de": "12 Stunden", "ru": "12 ?????" },
+            "24 hours": { "en": "24 hours", "de": "24 Stunden", "ru": "24 ????" },
+            "instance": { "en": "weather instance", "de": "Wetterinstanz", "ru": "?????????" },
+             "time_interval": { "en": "Time interval", "de": "Zeitintervall", "ru": "????????" },
+             "group_rain": { "en": "rain", "de": "Regen", "ru": "???" },
+            "group_temperature": { "en": "temperature", "de": "Temperatur", "ru": "???" },
+            "group_clouds": { "en": "clouds", "de": "Wolken", "ru": "???" },
+            "withxaxix": { "en": "show X axis", "de": "zeige X-Achse", "ru": "???" },
+            "rainvisible": { "en": "rain visible", "de": "Regenmenge sichtbar", "ru": "???" },
+            "rainchartType": { "en": "rain chart type", "de": "Regencharttype", "ru": "???" },
+            "raincolor": { "en": "rain color", "de": "Farbe für Regenmenge", "ru": "???" },
+            "chancerainvisible": { "en": "chance rain visible", "de": "Regenwahrscheinlichkeit sichtbar", "ru": "???" },
+            "tempvisible": { "en": "visible", "de": "sichtbar", "ru": "???" },
+            "tempchartType": { "en": "chart type", "de": "Charttype", "ru": "???" },
+            "tempcolor": { "en": "color ", "de": "Farbe", "ru": "???" },
+            "chanceraincolor": { "en": "chance rain color ", "de": "Farbe für Regenwahrscheinlichkeit", "ru": "???" },
+            "cloudsvisible": { "en": "visible", "de": "sichtbar", "ru": "???" },
+            "cloudschartType": { "en": "chart type", "de": "Charttype", "ru": "???" },
+            "sunorcloud": { "en": "show sun or clouds", "de": "Anzeige Sonne oder Wolken", "ru": "???" },
+            "cloudcolor": { "en": "color", "de": "Farbe", "ru": "???" },
+            "line": { "en": "line", "de": "Linie", "ru": "???" },
+            "bar": { "en": "bar", "de": "Balken", "ru": "???" },
+            "sun": { "en": "sun", "de": "Sonne", "ru": "???" },
+            "clouds": { "en": "clouds", "de": "Wolken", "ru": "???" },
+            "ticksonxaxix": { "en": "ticks on X axis", "de": "Anzahl Labels / X Achse", "ru": "???" },
+            "axislabelcolor": { "en": "color axis label", "de": "Farbe Achsbeschriftung", "ru": "???" },
+            "tickscolor": { "en": "color axis ticks", "de": "Farbe Achsmarke", "ru": "???" },
+			"maxY_temp" : { "en": "max value y-axix (0 for auto)", "de": "Max Wert Y-Achse (0 für auto)", "ru": "???" },
+			"minY_temp" : { "en": "min value y-axix (0 for auto)", "de": "Min Wert Y-Achse (0 für auto)", "ru": "???" },
+			"yTempVisible" : { "en": "show y axis", "de": "zeige Y-Achse", "ru": "???" },
+			"yRainVisible" : { "en": "show y axis for rain", "de": "zeige Y-Achse (Regenmenge)", "ru": "???" },
+			"yCloudVisible" : { "en": "show y axis", "de": "zeige Y-Achse", "ru": "???" },
+			"yChanceRainVisible" : { "en": "show y axis for chance rain", "de": "zeige Y-Achse (Regenwahrscheinlichkeit)", "ru": "???" },
+            "xDateFormat": { "en": "format for date/time on x-axis", "de": "Datum-/Zeitformat X-Achse", "ru": "???" },
+            "nobgcolor": { "en": "no background color", "de": "keine Farbe Hintergrund", "ru": "nobgcolor" },
+            "withborder": { "en": "show border", "de": "Rahmen anzeigen", "ru": "withborder" },
+        });
+    }
+
+    function degreeFormatter(v, axis) {
+        return v.toFixed(axis.tickDecimals) + "°C";
+    }
+
+    function percentageFormatter(v, axis) {
+        return v.toFixed(axis.tickDecimals) + "%";
+    }
+
+    function mmFormatter(v, axis) {
+        return v.toFixed(axis.tickDecimals) + "mm";
+    }
+    
+    
+    vis.binds.weather = {
+        version: "1.1.1",
+        showVersion: function () {
+            if (vis.binds.weather.version) {
+                console.log('Version vis-weather: ' + vis.binds.weather.version);
+                vis.binds.weather.version = null;
+            }
+        },
+
+        setup: {
+            intervals: {
+                '1 second': 1000,
+                '10 seconds': 10000,
+                '30 seconds': 30000,
+                '1 minute': 60000,
+                '2 minutes': 120000,
+                '5 minutes': 300000,
+                '10 minutes': 600000,
+                '30 minutes': 1800000,
+                '1 hour': 3600000,
+                '2 hours': 7200000,
+                '4 hours': 14400000,
+                '8 hours': 28800000,
+                '12 hours': 43200000,
+                '24 hours': 86400000
+
+            },
+        },
+        tempandrain: {
+            update: function ($div) {
+                var data = $div.data('options');
+
+                if (!data.instance) {
+                    console.log("keine instanz " + data.chartType);
+
+                    $div.html("<br> <center> <font color='red'> no instance </font> </center></br>");
+                } else {
+                    //warum wir das brauchen, verstehe ich noch nicht...
+                    //ist eigentlich nur dummy... aber ohne wird plot ganz klein dargestellt ???
+                    vis.getHistory(data.oid, {
+                        instance: data.instance,
+                        count: parseInt(data.points, 10) || 10,
+                        aggregate: data.aggregate || 'average',
+                        start: vis.binds.weather.setup.intervals[data.time_interval] ? new Date().getTime() - vis.binds.weather.setup.intervals[data.time_interval] : undefined,
+                        end: new Date().getTime() + 5000,
+                        timeout: 1000
+                    }, function (err, result) {
+                        var data = $div.data('options');
+                        if (err) console.log(err);
+   
+                        //console.log("ShowChart temp/rain/cloud begin");
+
+
+                        var values_rain = [];
+                        var values_chancerain = [];
+                        var maxY_rain = -99;
+                        var minY_rain = 100;
+                        var values_temp = [];
+                        var maxY_temp = -99;
+                        var minY_temp = 100;
+                        var values_cloud = [];
+                        var maxY_cloud = 100;
+                        var minY_cloud = 0;
+                        var cnt = 0;
+
+
+                        var max_cnt = 0;
+                        var day = 0;
+                        var month = 0;
+                        var year = 0;
+                        var hour = 0;
+                        var minute = 0;
+                        if (data.instance.indexOf("daswetter") > -1) {
+
+                            //get first date only for DasWetter.com
+                            var oid_first_date = data.oid_date;
+                            var sDate = vis.states[oid_first_date + '.val'];
+                            var day = parseInt(sDate.substring(6, 8),10);
+                            var month = parseInt(sDate.substring(4, 6),10);
+                            var year = parseInt(sDate.substring(0, 4),10);
+                            //console.log("got " + sDate + " from " + oid_first_date);
+                            month--;
+
+                            max_cnt = 40;
+                            data.chancerainvisible = false; // value not available!!
+
+                        }
+                        else if (data.instance.indexOf("weatherunderground") > -1) {
+                            max_cnt = 36;
+                        }
+
+                        //console.log("date is " + day +"."+month+"."+year);
+                        var lastHour = -1;
+                        for (var d = 0; d < max_cnt; d++) {
+
+                            //get rain values
+                            var oid_rain = data['oid_rain' + d];
+                            var val_rain = parseFloat(vis.states[oid_rain + '.val']);
+                            //console.log("got " + val_rain + " from " + oid_rain);
+                            if (val_rain > maxY_rain) maxY_rain = val_rain;
+                            if (val_rain < minY_rain) minY_rain = val_rain;
+                            var oid_chancerain = data['oid_chancerain' + d];
+                            var val_chancerain = parseInt(vis.states[oid_chancerain + '.val'],10);
+                            //console.log("got " + val_chancerain + " from " + oid_chancerain);
+
+
+                            //get temperature values
+                            var oid_temp = data['oid_temp' + d];
+                            var val_temp = parseInt(vis.states[oid_temp + '.val'],10);
+                            //console.log("got " + val_temp + " from " + oid_temp);
+                            if (val_temp > maxY_temp) maxY_temp = val_temp;
+                            if (val_temp < minY_temp) minY_temp = val_temp;
+
+                            //get cloud values
+                            var oid_cloud = data['oid_cloud' + d];
+                            var val = parseInt(vis.states[oid_cloud + '.val'],10);
+                            //console.log("got " + val + " from " + oid_cloud);
+                            var val_cloud = 0;
+                            if (data.sunorcloud == "sun") { //invert value 
+                                val_cloud = 100 - val;
+                            }
+                            else {
+                                val_cloud = val;
+                            }
+
+                            // get time
+                            var oid = data['oid_hour' + d];
+                            var sTime = vis.states[oid + '.val'];
+                            //console.log("got " + sTime + " from " + oid);
+                            var bDateNotValid = false;
+
+                            var oDate;
+                            if (data.instance.indexOf("daswetter") > -1) {
+
+                                hour = parseInt(sTime.substring(0, 2),10);
+                                minute = parseInt(sTime.substring(3, 5),10);
+
+                                oDate = new Date(year, month, day, hour, minute, 0, 0);
+
+                                //check next day
+                                if (hour < lastHour) {
+                                    oDate.setDate(oDate.getDate() + 1);
+                                    day = oDate.getUTCDate();
+                                    month = oDate.getUTCMonth();
+                                    year = oDate.getUTCFullYear();
+                                }
+                                lastHour = hour;
+                            }
+                            else if (data.instance.indexOf("weatherunderground") > -1) {
+                            
+                                if (typeof sTime == 'undefined') {
+                                    bDateNotValid = true;
+                                }
+                                else {
+                                    //04:00 PM CEST am 14. Mai 2017
+                                    var oTemp = sTime.split(' ');
+                                    var oTemp1 = oTemp[0].split(':');
+
+                                    hour = parseInt(oTemp1[0], 10);
+                                    if (oTemp[1] == "PM" && hour != 12) {
+                                        hour += 12; //PM
+                                    }
+                                    if (oTemp[1] == "AM" && hour == 12) {
+                                        hour = 0; //AM
+                                    }
+                                    //12 PM ist 12 Mittags
+                                    //12 AM ist 0 Nachts
+
+                                    minute = parseInt(oTemp1[1], 10);
+                                    year = parseInt(oTemp[6], 10);
+
+                                    switch (oTemp[5]) {
+                                        case "Januar": month = 0; break;
+                                        case "Februar": month = 1; break;
+                                        case "März": month = 2; break;
+                                        case "April": month = 3; break;
+                                        case "Mai": month = 4; break;
+                                        case "Juni": month = 5; break;
+                                        case "Juli": month = 6; break;
+                                        case "August": month = 7; break;
+                                        case "September": month = 8; break;
+                                        case "Oktober": month = 9; break;
+                                        case "November": month = 10; break;
+                                        case "Dezember": month = 11; break;
+                                    }
+
+
+                                    day = parseInt(oTemp[4], 10);
+
+                                    //console.log("--------" + day + "." + month + 1 + "." + year + " " + hour + ":" + minute);
+
+                                    oDate = new Date(year, month, day, hour, minute, 0, 0);
+                                }
+                            }
+                            
+                            //console.log(date+" "+ val_rain + " " + val_temp + " " + val_cloud);
+
+                            if (!bDateNotValid) {
+                                //need time in UTC
+                                var date = oDate.getTime();
+                                //console.log(date);
+                                values_rain.push([date, val_rain]);
+                                values_temp.push([date, val_temp]);
+                                values_cloud.push([date, val_cloud]);
+                                values_chancerain.push([date, val_chancerain]);
+                            }
+                        }
+                    
+                
+
+                    //maxY += 0.1 * maxY;
+                    //minY -= 0.1 * minY;
+
+                        maxY_temp = Math.ceil((maxY_temp + 1) / 10) * 10;
+                        if (minY_temp > 0) {
+                            minY_temp = 0;
+                        }
+                        else {
+                            var temp1 = Math.abs(minY_temp);
+
+                            minY_temp = Math.ceil((temp1 + 1) / 10) * 10;
+                            minY_temp = -1.0 * minY_temp;
+                        }
+
+
+
+                        maxY_rain = Math.ceil((maxY_rain + 1) / 10) * 10;
+                        if (maxY_rain < 10) maxY_rain = 10;
+
+                    //console.log("start " + maxY_rain + " / " + minY_rain + " " + maxY_temp + " / " + minY_temp);
+
+
+                    var barwidth = 0;
+                    if (data.instance.indexOf("daswetter") > -1) {
+                        barwidth = 1000 * 60 * 60 * 2; //2h
+                    }
+                    else if (data.instance.indexOf("weatherunderground") > -1) {
+                        barwidth = 1000 * 60 * 60 * 0.5; //0.5h
+                    }
+                    //console.log("barwidth = " + barwidth); // in ms
+
+                    $.plot($div,
+                        [{
+                            data: data.chancerainvisible ? values_chancerain : {},
+                            color: data.chanceraincolor,
+                            xaxis: 1,
+                            yaxis: 4,
+                            lines: { show: false },
+                            bars:
+                                {
+                                    show:  true,
+                                    barWidth: barwidth
+                                }
+                        },
+
+
+                            {
+                            data: data.tempvisible ? values_temp : {},
+                            color: data.tempcolor,
+                            xaxis: 1,
+                            yaxis: 1,
+                            lines: { show: data.tempchartType == "line" ? true : false, fill: false },
+                            bars:
+                                {
+                                    show: data.tempchartType == "bar" ? true : false,
+                                    barWidth: barwidth
+                                }
+                        },
+                        {
+                            data: data.rainvisible ? values_rain : {},
+                            color: data.raincolor,
+                            xaxis: 1,
+                            yaxis: 2,
+                            lines: { show: data.rainchartType == "line" ? true : false, fill: false },
+                            bars:
+                                {
+                                    show: data.rainchartType == "bar" ? true : false,
+                                    barWidth: barwidth
+                                }
+                        },
+                        {
+                            data: data.cloudsvisible ? values_cloud : {},
+                            color: data.cloudcolor,
+                            xaxis: 1,
+                            yaxis: 3,
+                            lines: { show: data.cloudschartType == "line" ? true : false, fill: false },
+                            bars:
+                                {
+                                    show: data.cloudschartType == "bar" ? true : false,
+                                    barWidth: barwidth
+                                }
+                        }
+                        
+                        ],
+                        {
+
+                            xaxes: //xaxis mit [] geht nicht...!!!
+                              [{//das folgende geht
+                                  show: data.withxaxix,
+                                  mode: "time",
+                                  tickLength: 5,
+                                  ticks: data.ticksonxaxix > 0 ? parseInt(data.ticksonxaxix,10) : 5,
+                                  timeformat: data.xDateFormat,
+                                  monthNames: ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
+                                  color: data.tickscolor,
+                                  font: {
+                                      color: data.axislabelcolor
+                                  }
+                              }],
+							
+                            yaxes: //yaxis mit [] geht nicht...!!!
+									//das folgende geht							
+                                
+								//temp y-axis #1
+								[{ 
+                                show: (data.tempvisible && data.yTempVisible),
+									max: data.maxY_temp != 0 ? parseInt(data.maxY_temp,10) : maxY_temp, //0 = default = auto determine max/min value
+                                    min: data.minY_temp != 0 ? parseInt(data.minY_temp,10) : minY_temp,
+                                    alignTicksWithAxis: 1,
+                                    position: 'left',
+                                    ticks: 3,
+                                    color: data.tickscolor,
+                                    font: {
+                                        color: data.tempcolor,
+                                    },
+                                    tickFormatter: degreeFormatter
+                                },
+                              
+							  //rain visible y-axis #2
+							  {
+                                  show: (data.rainvisible && data.yRainVisible),
+                                  max: maxY_rain,
+                                  min: 0,
+                                  alignTicksWithAxis: 2,
+                                  position: 'right',
+                                  ticks: 3,
+                                  color: data.tickscolor,
+                                  font: {
+                                      color: data.raincolor,
+                                  },
+                                  tickFormatter: mmFormatter
+                              },
+							  
+							  //sun-cloud y-axis
+                              {
+                                  show: (data.cloudsvisible && data.yCloudVisible),
+                                  max: maxY_cloud,
+                                  min: minY_cloud,
+                                  alignTicksWithAxis: 3,
+                                  position: 'left',
+                                  ticks: 3,
+                                  color: data.tickscolor,
+                                  font: {
+                                      color: data.cloudcolor
+                                  },
+                                  tickFormatter: percentageFormatter
+                              },
+							  
+							  //chance rain y-axis  #4
+                                {
+                                    show: (data.chancerainvisible && data.yChanceRainVisible),  //much better visible without
+                                    max: 100,
+                                    min: 0,
+                                    alignTicksWithAxis: 4,
+                                    position: 'right',
+                                    ticks: 3,
+                                    color: data.tickscolor,
+                                    font: {
+                                        color: data.raincolor
+                                    },
+                                    tickFormatter: percentageFormatter
+                                }],
+                            grid:
+                              {
+                                  //Farben einstellen fehlt noch
+                                backgroundColor: data.nobgcolor ? null : { colors: ["#fff", "#eee"] },
+                                borderWidth: {
+                                    top: data.withborder ? 1 : 0,
+                                    right: data.withborder ? 1 : 0,
+                                    bottom: data.withborder ? 2 : 0,
+                                    left: data.withborder ? 2 : 0
+                                },
+                                  //fehlt noch
+                                  //markings: nextDay
+                              }
+                        }
+                        );
+
+
+                     }); //GetHistory
+                }
+            },
+            init: function (el, view, data) {
+                var $div = $(el);
+                console.log("temp and rain init " );
+                var _data = {};
+                for (var s in data) {
+
+                    if (s[0] !== '_' && data.hasOwnProperty(s) && typeof data[s] !== 'object' && typeof data[s] !== 'function') {
+                        _data[s] = data[s];
+
+                    }
+                }
+                data = null;
+                $div.data('options', _data);
+
+                if (_data.instance) {
+
+                    //Umschalten wu / daswetter und auf oid zugreifen
+                    var max_cnt = 0;
+                    if (_data.instance.indexOf("daswetter") > -1) {
+
+                        var oid_first_date = _data.oid_date;
+                        //console.log("bind " + oid_first_date);
+                        vis.states.bind(oid_first_date + '.val', function () {
+                            vis.binds.weather.tempandrain.update($div);
+                        });
+                        max_cnt = 40;
+
+                    }
+                    else if (_data.instance.indexOf("weatherunderground") > -1) {
+                        max_cnt = 36;
+                    }
+
+                    else {
+                        console.log("no wether instance set in init " + _data.instance);
+                    }
+
+                    if (_data.instance.indexOf("weatherunderground") > -1) {
+                        for (var i = 0; i < max_cnt; i++) {
+
+                            //get chance rain oid
+                            var oid_chancerain = _data['oid_chancerain' + i];
+                            //console.log("bind " + oid_chancerain);
+                            vis.states.bind(oid_chancerain + '.val', function () {
+                                vis.binds.weather.tempandrain.update($div);
+                            });
+                        }
+                    }
+                    //gilt für beide nur mit unterschiedlichen grenzen
+                    for (var i = 0; i < max_cnt; i++) {
+
+                        //get rain oid
+                        var oid_rain = _data['oid_rain' + i];
+                        //console.log("bind " + oid_rain);
+                        vis.states.bind(oid_rain + '.val', function () {
+                            vis.binds.weather.tempandrain.update($div);
+                        });
+
+     
+                        //get temperature oid
+                        var oid_temp = _data['oid_temp' + i];
+                        //console.log("bind " + oid_temp);
+                        vis.states.bind(oid_temp + '.val', function () {
+                            vis.binds.weather.tempandrain.update($div);
+                        });
+
+                        //get cloud oid
+                        var oid_cloud = _data['oid_cloud' + i];
+                        //console.log("bind " + oid_cloud);
+                        vis.states.bind(oid_cloud + '.val', function () {
+                            vis.binds.weather.tempandrain.update($div);
+                        });
+
+                        // get time oid
+                        var oid_hour = _data['oid_hour' + i];
+                        //console.log("bind " + oid_hour);
+                        vis.states.bind(oid_hour + '.val', function () {
+                            vis.binds.weather.tempandrain.update($div);
+                        });
+                    }
+
+                    // update every x seconds
+                    if (!vis.editMode) {
+                        $div.data('timer', setInterval(function () {
+                            vis.binds.weather.tempandrain.update($div);
+                        }, parseInt(vis.binds.weather.setup.intervals[_data.time_interval] / (parseInt(_data.points, 10) || 10), 10)));
+                    }
+                }
+                else {
+                    console.log("instance not set ");
+                }
+                vis.binds.weather.tempandrain.update($div);
+                if (vis.editMode) {
+                    console.log("flot version " + $.plot.version + " for weather");
+                }
+            }
+        },
+    };
+
+    if (vis.editMode) {
+        vis.binds.weather.onInstanceChanged = function (widgetID, view, newId, fields) {
+            console.log('---------: ' + widgetID + ' - ' + view + ' - ' + newId + ' - ' + fields);
+
+
+            //delete all
+            vis.views[view].widgets[widgetID].data.oid_date = "";
+            vis.widgets[widgetID].data.oid_date = "";
+
+            for (var h = 0; h < 40; h++) {
+                vis.views[view].widgets[widgetID].data['oid_rain' + h] = "";
+                vis.widgets[widgetID].data['oid_rain' + h] = "";
+
+                vis.views[view].widgets[widgetID].data['oid_chancerain' + h] = "";
+                vis.widgets[widgetID].data['oid_chancerain' + h] = "";
+
+                vis.views[view].widgets[widgetID].data['oid_temp' + h] = "";
+                vis.widgets[widgetID].data['oid_temp' + h] = "";
+
+                vis.views[view].widgets[widgetID].data['oid_cloud' + h] = "";
+                vis.widgets[widgetID].data['oid_cloud' + h] = "";
+
+                vis.views[view].widgets[widgetID].data['oid_hour' + h] = "";
+                vis.widgets[widgetID].data['oid_hour' + h] = "";
+            }
+
+            //wu oder DasWetter (umschaltbar)
+
+            var changed = [];
+            if (newId.indexOf("daswetter") > -1) {
+
+                var oid_first_date = newId + ".NextDaysDetailed.0d.date";
+
+                if (vis.objects[oid_first_date]) {
+                    //console.log(oid_first_date + " updated ");
+                    vis.views[view].widgets[widgetID].data.oid_date = oid_first_date;
+                    vis.widgets[widgetID].data.oid_date = oid_first_date;
+                }
+
+                var cnt = 0;
+                for (var d = 0; d < 5; d++) {
+
+                    for (var p = 0; p < 8; p++) {
+                        //get rain oid
+                        var oid_rain = newId+".NextDaysDetailed." + d + "d." + p + "h.Rain";
+
+                        //not available here
+                        //var oid_chancerain = newId + ???
+
+                        //get temperature oid
+                        var oid_temp = newId+ ".NextDaysDetailed." + d + "d." + p + "h.Temperature";
+
+                        //get cloud oid
+                        var oid_cloud =  newId+".NextDaysDetailed." + d + "d." + p + "h.Clouds";
+
+                        // get time oid
+                        var oid_hour = newId+ ".NextDaysDetailed." + d + "d." + p + "h.hour";
+
+
+                        if (vis.objects[oid_rain]) {
+                            //console.log(oid_rain + " updated ");
+                            vis.views[view].widgets[widgetID].data['oid_rain' + cnt] = oid_rain;
+                            vis.widgets[widgetID].data['oid_rain' + cnt] = oid_rain;
+                        }
+                        if (vis.objects[oid_temp]) {
+                            //console.log(oid_temp + " updated ");
+                            vis.views[view].widgets[widgetID].data['oid_temp' + cnt] = oid_temp;
+                            vis.widgets[widgetID].data['oid_temp' + cnt] = oid_temp;
+                        }
+                        if (vis.objects[oid_cloud]) {
+                            //console.log(oid_cloud + " updated ");
+                            vis.views[view].widgets[widgetID].data['oid_cloud' + cnt] = oid_cloud;
+                            vis.widgets[widgetID].data['oid_cloud' + cnt] = oid_cloud;
+                        }
+                        if (vis.objects[oid_hour]) {
+                            //console.log(oid_hour + " updated ");
+                            vis.views[view].widgets[widgetID].data['oid_hour' + cnt] = oid_hour;
+                            vis.widgets[widgetID].data['oid_hour' + cnt] = oid_hour;
+                        }
+                        cnt++;
+                    }
+                }
+            }
+            else if (newId.indexOf("weatherunderground") > -1) {
+
+
+                for (var h = 0; h < 36; h++) {
+
+                    //get rain oid weatherunderground.0.forecast.0h.qpf
+                    var oid_rain = newId + ".forecast." + h + "h.qpf";
+
+                    //get rain oid weatherunderground.0.forecast.0h.qpf
+                    var oid_chancerain = newId + ".forecast." + h + "h.pop";
+
+                    //get temperature oid weatherunderground.0.forecast.0h.temp
+                    var oid_temp = newId + ".forecast." + h + "h.temp";
+
+                    //get cloud oid weatherunderground.0.forecast.0h.sky
+                    var oid_cloud = newId + ".forecast." + h + "h.sky";
+
+                    // get time oid
+                    var oid_hour = newId + ".forecast." + h + "h.time";
+
+                    if (vis.objects[oid_rain]) {
+                        //console.log(oid_rain + " updated ");
+                        vis.views[view].widgets[widgetID].data['oid_rain' + h] = oid_rain;
+                        vis.widgets[widgetID].data['oid_rain' + h] = oid_rain;
+                    }
+                    else {
+                        //console.log("wrong version of weatherunderground? >1.0.5?");
+                    }
+                    if (vis.objects[oid_chancerain]) {
+                        //console.log(oid_chancerain + " updated ");
+                        vis.views[view].widgets[widgetID].data['oid_chancerain' + h] = oid_chancerain;
+                        vis.widgets[widgetID].data['oid_chancerain' + h] = oid_rain;
+                    }
+                    if (vis.objects[oid_temp]) {
+                        //console.log(oid_temp + " updated ");
+                        vis.views[view].widgets[widgetID].data['oid_temp' + h] = oid_temp;
+                        vis.widgets[widgetID].data['oid_temp' + h] = oid_temp;
+                    }
+                    if (vis.objects[oid_cloud]) {
+                        //console.log(oid_cloud + " updated ");
+                        vis.views[view].widgets[widgetID].data['oid_cloud' + h] = oid_cloud;
+                        vis.widgets[widgetID].data['oid_cloud' + h] = oid_cloud;
+                    }
+                    if (vis.objects[oid_hour]) {
+                        //console.log(oid_hour + " updated ");
+                        vis.views[view].widgets[widgetID].data['oid_hour' + h] = oid_hour;
+                        vis.widgets[widgetID].data['oid_hour' + h] = oid_hour;
+                    }
+                }
+            }
+            else {
+                //ja was nun? do nothing
+                console.log(" no weather instance set ");
+            }
+
+          return changed;
+        }
+
+    }
+
+    vis.binds.weather.showVersion();
+
+</script>
+
+
+
+<script id="tplWeatherShowInstance"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-set="weather"
+        data-vis-name="Weather"
+        data-vis-type="weather"
+        data-vis-update-style="true"
+        data-vis-prev='<img src="widgets/weather/img/Prev_tplWeather.png"></img>'
+        data-vis-attrs="instance/weather/onInstanceChanged;"
+        data-vis-attrs0="time_interval[30 minutes]/select,1 second,10 seconds,30 seconds,1 minute,2 minutes,5 minutes,10 minutes,30 minutes,1 hour,2 hours,4 hours,8 hours,12 hours,24 hours;withxaxix[true]/checkbox;ticksonxaxix[5];axislabelcolor[#ffffff]/color;tickscolor[#ffffff]/color;xDateFormat[%d.%b %H:%M];withborder[true]/checkbox;nobgcolor[true]/checkbox;"
+        data-vis-attrs1="group.rain;rainvisible[true]/checkbox;rainchartType[bar]/select,line,bar;raincolor[#1d0ed8]/color;chancerainvisible[true]/checkbox;chanceraincolor[#877efc]/color;yRainVisible[true]/checkbox;yChanceRainVisible[true]/checkbox;"
+        data-vis-attrs2="group.temperature;tempvisible[true]/checkbox;tempchartType[line]/select,line,bar;tempcolor[#00b3ac]/color;maxY_temp[0];minY_temp[0];yTempVisible[true]/checkbox;"
+        data-vis-attrs3="group.clouds;cloudsvisible/checkbox;cloudschartType[bar]/select,line,bar; sunorcloud[sun]/select,sun,clouds;cloudcolor[#f6ef3c]/color;yCloudVisible[true]/checkbox;"
+        
+        data-vis-attrs4="group.oids;oid_rain(1-40)/id;oid_chancerain(1-40)/id;oid_temp(1-40)/id;oid_cloud(1-40)/id;oid_hour(1-40)/id;"
+        data-vis-attrs5="oid_date/id;"
+
+>
+
+    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow: hidden; width: 210px; height: 170px;" id="<%= this.data.attr('wid') %>">
+        <div class="vis-widget-body" <%= (el1) -> vis.binds.weather.tempandrain.init(el1, this.view, this.data) %>></div>
+        
+    </div>
+
+</script>
+

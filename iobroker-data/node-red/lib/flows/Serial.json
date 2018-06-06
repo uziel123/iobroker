@@ -1,0 +1,2125 @@
+[
+    {
+        "id": "e569dc7b.c726c",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "Input 2: X2",
+        "func": "msg.payload = msg.payload[0];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 630,
+        "y": 200,
+        "wires": [
+            [
+                "57fb484f.72e218"
+            ]
+        ]
+    },
+    {
+        "id": "e184500d.c6078",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "Input 1: X1",
+        "func": "msg.payload = msg.payload[0];\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 627.4406127929688,
+        "y": 129.7380828857422,
+        "wires": [
+            [
+                "7422a4c.b80605c",
+                "b36a1bc4.9031f8"
+            ]
+        ]
+    },
+    {
+        "id": "d812edc9.2ebc1",
+        "type": "comment",
+        "z": "bdd730e0.d2838",
+        "name": "*** Read Modbus Settings ",
+        "info": "Global Network Settings\nIP: 169.254.119.60\nMask: 255.255.255.0\nGlobal IP: 169.254.255.255\n\nControl Network Settings\nIP: 169.254.119.10\nMask: 255.255.255.0\nGlobal IP: 169.254.119.1\n\nNode Red Modbus TCP Settings\nIP: 169.254.119.10\nPort: 502\nUnit: 1\n\n\n**Make sure Control Network Settings IP and Node Red Modbus IP address match***\n**Must have Static IP address for Modbus TCP/IP to work properly***\n\n\n\n",
+        "x": 612.8096523284912,
+        "y": 61.19045162200928,
+        "wires": []
+    },
+    {
+        "id": "55d036c7.34a3e8",
+        "type": "comment",
+        "z": "bdd730e0.d2838",
+        "name": "Inputs Read Only",
+        "info": "",
+        "x": 209.4286708831787,
+        "y": 56.428550720214844,
+        "wires": []
+    },
+    {
+        "id": "96ff8c2d.eed24",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "float",
+        "func": "global.set ('flt', msg.payload);\n//if (global.get ('step2')===1) {global.set('flt', 0);}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1029.0437030792236,
+        "y": 147.26981735229492,
+        "wires": [
+            [
+                "ae073465.fda878"
+            ]
+        ]
+    },
+    {
+        "id": "5566a429.4aa6ac",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "phase",
+        "func": "if (global.get ('phase_check')===0) {global.set('phase', 1);\nreturn msg;}\nelse global.set ('phase', msg.payload); \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1033.7460746765137,
+        "y": 233.12690830230713,
+        "wires": [
+            [
+                "d8abc916.a083f8"
+            ]
+        ]
+    },
+    {
+        "id": "7422a4c.b80605c",
+        "type": "change",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "1",
+                "tot": "num"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 876.0318660736084,
+        "y": 148.79364204406738,
+        "wires": [
+            [
+                "96ff8c2d.eed24"
+            ]
+        ]
+    },
+    {
+        "id": "57fb484f.72e218",
+        "type": "change",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "1",
+                "tot": "num"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 876.7936725616455,
+        "y": 239.12700653076172,
+        "wires": [
+            [
+                "5566a429.4aa6ac"
+            ]
+        ]
+    },
+    {
+        "id": "b36a1bc4.9031f8",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 946.5238552093506,
+        "y": 98.75072479248047,
+        "wires": []
+    },
+    {
+        "id": "8155faf0.7e0168",
+        "type": "comment",
+        "z": "bdd730e0.d2838",
+        "name": "Output Read/Write ",
+        "info": "",
+        "x": 1118.530174255371,
+        "y": 1148.5910663604736,
+        "wires": []
+    },
+    {
+        "id": "44986107.b623b",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "custom function",
+        "func": "// declare place holder variables\nvar originalval1 = msg.payload;\nvar varps1 = \"\";\n\n\n// convert string of originalval to float with 1 decimal place\n// run originalval thru a simple minus operation to form the 'temp' number\nvarps1 = parseFloat(originalval1).toFixed(2);\n\n// output the originalval after deduction \nmsg.payload = varps1;\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1414.9332733154297,
+        "y": 537.2561450004578,
+        "wires": [
+            [
+                "1a51d1fa.31db3e"
+            ]
+        ]
+    },
+    {
+        "id": "5bb496a8.339278",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "custom function",
+        "func": "// declare place holder variables\nvar originalval2 = msg.payload;\nvar varps2 = \"\";\n\n\n// convert string of originalval to float with 1 decimal place\n// run originalval thru a simple minus operation to form the 'temp' number\nvarps2 = parseFloat(originalval2).toFixed(2);\n\n// output the originalval after deduction \nmsg.payload = varps2;\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1396.4810791015625,
+        "y": 722.3156585693359,
+        "wires": [
+            [
+                "4ac3f599.eff63c"
+            ]
+        ]
+    },
+    {
+        "id": "7a0162ad.d9967c",
+        "type": "comment",
+        "z": "bdd730e0.d2838",
+        "name": "Analog Read Only",
+        "info": "",
+        "x": 365.50482177734375,
+        "y": 492.7919144630432,
+        "wires": []
+    },
+    {
+        "id": "1a51d1fa.31db3e",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "actFilt",
+        "func": "global.set ('actFilt', msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1563.5367012023926,
+        "y": 554.2521901130676,
+        "wires": [
+            [
+                "d0a14e.8ee66eb"
+            ]
+        ]
+    },
+    {
+        "id": "4ac3f599.eff63c",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "tempPres",
+        "func": "global.set ('tempPres', msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1543.869857788086,
+        "y": 773.2998371124268,
+        "wires": [
+            [
+                "72a575a6.f1e8ac"
+            ]
+        ]
+    },
+    {
+        "id": "e8635092.d964b",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "Start ",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "x": 65.79048919677734,
+        "y": 608.1854791641235,
+        "wires": [
+            [
+                "b9aa1003.f3333"
+            ]
+        ]
+    },
+    {
+        "id": "a4da9e0f.e5975",
+        "type": "trigger",
+        "z": "bdd730e0.d2838",
+        "op1": "",
+        "op2": "0",
+        "op1type": "nul",
+        "op2type": "str",
+        "duration": "1.5",
+        "extend": false,
+        "units": "s",
+        "reset": "",
+        "name": "",
+        "x": 470,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b9aa1003.f3333",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "ducted check",
+        "func": "if (global.get ('ducted_check') ===1) { \nmsg.payload = 1;\nreturn msg;} \nelse\nmsg.payload = 0;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 323.5127258300781,
+        "y": 906.6854810714722,
+        "wires": [
+            [
+                "e1b09f3.a7dc86"
+            ]
+        ]
+    },
+    {
+        "id": "e1b09f3.a7dc86",
+        "type": "switch",
+        "z": "bdd730e0.d2838",
+        "name": "switch",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 470.1595001220703,
+        "y": 877.5783996582031,
+        "wires": [
+            [],
+            [
+                "a4da9e0f.e5975"
+            ]
+        ]
+    },
+    {
+        "id": "bd47ef34.9006b",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "custom function",
+        "func": "// declare place holder variables\nvar originalval3 = msg.payload;\nvar varps3 = \"\";\n\n\n// convert string of originalval to float with 1 decimal place\n// run originalval thru a simple minus operation to form the 'temp' number\nvarps3 = parseFloat(originalval3).toFixed(2);\n\n// output the originalval after deduction \nmsg.payload = varps3;\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1377.576301574707,
+        "y": 907.6719226837158,
+        "wires": [
+            [
+                "fca384f.aa49678"
+            ]
+        ]
+    },
+    {
+        "id": "fca384f.aa49678",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "ductPres",
+        "func": "global.set ('ductPres', msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1526.560188293457,
+        "y": 940.7515125274658,
+        "wires": [
+            [
+                "bc4d119b.24572"
+            ]
+        ]
+    },
+    {
+        "id": "22d6b261.ac443e",
+        "type": "comment",
+        "z": "bdd730e0.d2838",
+        "name": "Enable 3rd Pressure if Ducted Unit",
+        "info": "",
+        "x": 447.7190628051758,
+        "y": 765.9713535308838,
+        "wires": []
+    },
+    {
+        "id": "bc4d119b.24572",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1653.081428527832,
+        "y": 889.3668851852417,
+        "wires": []
+    },
+    {
+        "id": "d0a14e.8ee66eb",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "#1 Purple",
+        "active": false,
+        "console": "false",
+        "complete": "payload",
+        "x": 1656.9654159545898,
+        "y": 504.1841721534729,
+        "wires": []
+    },
+    {
+        "id": "72a575a6.f1e8ac",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "#2 Green",
+        "active": false,
+        "console": "false",
+        "complete": "payload",
+        "x": 1639.1292343139648,
+        "y": 714.511848449707,
+        "wires": []
+    },
+    {
+        "id": "fb75b2f.95eb95",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "topic": "",
+        "payload": "xxx",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 100.7857666015625,
+        "y": 1184.404854774475,
+        "wires": [
+            [
+                "d874637a.cdf4d"
+            ]
+        ]
+    },
+    {
+        "id": "d874637a.cdf4d",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "func": "msg.payload = global.get('rsrtest');\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 239.2857437133789,
+        "y": 1184.4048099517822,
+        "wires": [
+            [
+                "33f4669f.d837fa"
+            ]
+        ]
+    },
+    {
+        "id": "33f4669f.d837fa",
+        "type": "switch",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 385.53575325012207,
+        "y": 1189.404806137085,
+        "wires": [
+            [
+                "50ac051d.02859c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "50ac051d.02859c",
+        "type": "trigger",
+        "z": "bdd730e0.d2838",
+        "op1": "0",
+        "op2": "1",
+        "op1type": "num",
+        "op2type": "num",
+        "duration": "1",
+        "extend": false,
+        "units": "s",
+        "reset": "",
+        "name": "",
+        "x": 533.6071701049805,
+        "y": 1189.904808998108,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "22f249ab.e31966",
+        "type": "comment",
+        "z": "bdd730e0.d2838",
+        "name": "test cycle",
+        "info": "",
+        "x": 282.58280181884766,
+        "y": 1138.5480308532715,
+        "wires": []
+    },
+    {
+        "id": "3abfa4a7.aa240c",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "afterfilter/impinger calibration",
+        "func": "var x1 = msg.payload;\nvar y1 = \"\";\nif (global.get('filt_slope')>0){\nvar y1 = (global.get('filt_slope')* x1) - (global.get('filt_offset'));}\nelse var y1 = x1;\nmsg.payload = y1;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1196.600845336914,
+        "y": 540.6550250053406,
+        "wires": [
+            [
+                "bd484ac1.0ca9a8",
+                "44986107.b623b"
+            ]
+        ]
+    },
+    {
+        "id": "bd484ac1.0ca9a8",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1396.0283966064453,
+        "y": 473.0037055015564,
+        "wires": []
+    },
+    {
+        "id": "947d13e5.e9b6c",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "scrubber calibration",
+        "func": "var x2 = msg.payload;\nvar y2 = \"\";\nif (global.get('scrub_slope')>0){\nvar y2 = (global.get('scrub_slope')* x2) -(global.get('scrub_offset'));}\nelse var y2 = x2;\nmsg.payload = y2;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1181.0662841796875,
+        "y": 722.3306732177734,
+        "wires": [
+            [
+                "5bb496a8.339278",
+                "11e218c4.f27df7"
+            ]
+        ]
+    },
+    {
+        "id": "13fde198.cf04de",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "duct calibration",
+        "func": "var x3 = msg.payload;\nvar y3 = \"\";\nif (global.get('duct_slope')>0){\nvar y3 = (global.get('duct_slope')* x3) -(global.get('duct_offset'));}\nelse var y3 = x3;\nmsg.payload = y3;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1167.8283767700195,
+        "y": 907.6174793243408,
+        "wires": [
+            [
+                "bd47ef34.9006b",
+                "8281fc07.d1a94"
+            ]
+        ]
+    },
+    {
+        "id": "8281fc07.d1a94",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1335.2033767700195,
+        "y": 957.8633289337158,
+        "wires": []
+    },
+    {
+        "id": "11e218c4.f27df7",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1362.434326171875,
+        "y": 778.3179168701172,
+        "wires": []
+    },
+    {
+        "id": "fc5966f3.6badf8",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "rawFilt",
+        "func": "global.set ('rawFilt', msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1135.7858047485352,
+        "y": 497.61903524398804,
+        "wires": [
+            [
+                "2b2601c7.6242ce"
+            ]
+        ]
+    },
+    {
+        "id": "4a5c7737.bba518",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "rawScrub",
+        "func": "global.set ('rawScrub', msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1146.9525146484375,
+        "y": 674.9523773193359,
+        "wires": [
+            [
+                "d871c323.3dbbb"
+            ]
+        ]
+    },
+    {
+        "id": "1319a67f.6c321a",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "rawDuct",
+        "func": "global.set ('rawDuct', msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1187.214485168457,
+        "y": 865.7619495391846,
+        "wires": [
+            [
+                "57a26d3a.c5c6a4"
+            ]
+        ]
+    },
+    {
+        "id": "e3ad7455.123cf8",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "Input 3: 32",
+        "func": "msg.payload = msg.payload[0];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 641.0357055664062,
+        "y": 276.11900329589844,
+        "wires": [
+            [
+                "994aafec.f7607"
+            ]
+        ]
+    },
+    {
+        "id": "994aafec.f7607",
+        "type": "change",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "true",
+                "fromt": "bool",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "false",
+                "fromt": "bool",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 861.7857341766357,
+        "y": 319.5475788116455,
+        "wires": [
+            [
+                "fddacc8c.a8d64"
+            ]
+        ]
+    },
+    {
+        "id": "fddacc8c.a8d64",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "safety",
+        "func": "global.set ('safety', msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1018.0475978851318,
+        "y": 309.3095464706421,
+        "wires": [
+            [
+                "17a191d7.d6bc4e"
+            ]
+        ]
+    },
+    {
+        "id": "2a4b546d.b33f0c",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "x": 1150.0713787078857,
+        "y": 197.6190128326416,
+        "wires": [
+            [
+                "6e7ee180.98ca7"
+            ]
+        ]
+    },
+    {
+        "id": "6e7ee180.98ca7",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "set phase",
+        "func": "if (global.get ('phase_check')===0) \n{global.set('phase', 1);\nreturn msg;}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1249.7142486572266,
+        "y": 246.33327102661133,
+        "wires": [
+            [
+                "c83670d6.29196"
+            ]
+        ]
+    },
+    {
+        "id": "ddb8cf46.153eb",
+        "type": "comment",
+        "z": "bdd730e0.d2838",
+        "name": "If not 3 phase, set phase at startup",
+        "info": "\n",
+        "x": 1327.5713787078857,
+        "y": 126.6190128326416,
+        "wires": []
+    },
+    {
+        "id": "c83670d6.29196",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1429.2856644221713,
+        "y": 233.47615568978443,
+        "wires": []
+    },
+    {
+        "id": "b42b2395.b7cbd",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "Array",
+        "func": "\n\nvar newMsgPS1 = { payload: msg.payload [0] };\nvar newMsgPS2 = { payload: msg.payload [1] };\nreturn [newMsgPS1, newMsgPS2];\n",
+        "outputs": "2",
+        "noerr": 0,
+        "x": 713.5714263916016,
+        "y": 616.5118961334229,
+        "wires": [
+            [
+                "518b08f0.f54bb8",
+                "3c910ea4.19ba42"
+            ],
+            [
+                "32c4571a.416138",
+                "e82f1215.caa5"
+            ]
+        ]
+    },
+    {
+        "id": "518b08f0.f54bb8",
+        "type": "range",
+        "z": "bdd730e0.d2838",
+        "minin": "0",
+        "maxin": "100",
+        "minout": "0",
+        "maxout": "15.00",
+        "action": "scale",
+        "round": false,
+        "name": "IMPINGER PRESS",
+        "x": 959.4166259765625,
+        "y": 604.7856941223145,
+        "wires": [
+            [
+                "fc5966f3.6badf8",
+                "3abfa4a7.aa240c",
+                "a148ebee.882578"
+            ]
+        ]
+    },
+    {
+        "id": "32c4571a.416138",
+        "type": "range",
+        "z": "bdd730e0.d2838",
+        "minin": "0",
+        "maxin": "100",
+        "minout": "0.00",
+        "maxout": "15.00",
+        "action": "scale",
+        "round": false,
+        "name": "FAN PRESS",
+        "x": 940.6190795898438,
+        "y": 644.4761047363281,
+        "wires": [
+            [
+                "4a5c7737.bba518",
+                "947d13e5.e9b6c",
+                "93903d34.c88e2"
+            ]
+        ]
+    },
+    {
+        "id": "42d83937.e86548",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 730,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "3c910ea4.19ba42",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 923.9880027770996,
+        "y": 568.9523420333862,
+        "wires": []
+    },
+    {
+        "id": "e82f1215.caa5",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 934.4046936035156,
+        "y": 684.7856974601746,
+        "wires": []
+    },
+    {
+        "id": "a148ebee.882578",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1206.40478515625,
+        "y": 601.1190032958984,
+        "wires": []
+    },
+    {
+        "id": "93903d34.c88e2",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1204.0714111328125,
+        "y": 637.1190032958984,
+        "wires": []
+    },
+    {
+        "id": "1680b63.b8eec4a",
+        "type": "modbus-getter",
+        "z": "bdd730e0.d2838",
+        "name": "Array PS3",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "unitid": "",
+        "dataType": "HoldingRegister",
+        "adr": "31",
+        "quantity": "1",
+        "server": "2dd25fbb.78a8",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "x": 698.3333206176758,
+        "y": 878.5952014923096,
+        "wires": [
+            [
+                "96a51ba0.648788",
+                "a13b7218.ce175"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "96a51ba0.648788",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 899.166674296061,
+        "y": 825.2618885040282,
+        "wires": []
+    },
+    {
+        "id": "a13b7218.ce175",
+        "type": "range",
+        "z": "bdd730e0.d2838",
+        "minin": "0",
+        "maxin": "100",
+        "minout": "0.00",
+        "maxout": "15.00",
+        "action": "scale",
+        "round": false,
+        "name": "DUCT PRESS",
+        "x": 909.0476264953613,
+        "y": 869.785605430603,
+        "wires": [
+            [
+                "1319a67f.6c321a",
+                "13fde198.cf04de",
+                "a2609566.3518c8"
+            ]
+        ]
+    },
+    {
+        "id": "a2609566.3518c8",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1157.5000534057617,
+        "y": 818.5951957702637,
+        "wires": []
+    },
+    {
+        "id": "669d214.be8dde",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "0",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 80.23805745442723,
+        "y": 434.78561862309743,
+        "wires": [
+            [
+                "e0703817.211998"
+            ]
+        ]
+    },
+    {
+        "id": "125252a6.a428bd",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "1",
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 83.5713882446289,
+        "y": 469.78562116622925,
+        "wires": [
+            [
+                "e0703817.211998"
+            ]
+        ]
+    },
+    {
+        "id": "e0703817.211998",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "set desk_unit",
+        "func": "global.set('desk_unit', msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 263.3332748413086,
+        "y": 446.4523344039917,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2b2601c7.6242ce",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1260.0714111328125,
+        "y": 433.11900329589844,
+        "wires": []
+    },
+    {
+        "id": "d871c323.3dbbb",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1305.0714111328125,
+        "y": 672.1190032958984,
+        "wires": []
+    },
+    {
+        "id": "57a26d3a.c5c6a4",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1348.5000076293945,
+        "y": 860.2618885040283,
+        "wires": []
+    },
+    {
+        "id": "ae073465.fda878",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1199.0714111328125,
+        "y": 75.11900329589844,
+        "wires": []
+    },
+    {
+        "id": "d8abc916.a083f8",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1202.0714111328125,
+        "y": 305.11900329589844,
+        "wires": []
+    },
+    {
+        "id": "17a191d7.d6bc4e",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1196.0714111328125,
+        "y": 361.11900329589844,
+        "wires": []
+    },
+    {
+        "id": "4858c415.8b174c",
+        "type": "modbus-read",
+        "z": "bdd730e0.d2838",
+        "name": "Float Switch INPUT 1",
+        "topic": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "unitid": "",
+        "dataType": "Input",
+        "adr": "1",
+        "quantity": "1",
+        "rate": "3",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "server": "2dd25fbb.78a8",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "x": 228.5714111328125,
+        "y": 127.11900329589844,
+        "wires": [
+            [
+                "e184500d.c6078"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f3c804a.3d74cf8",
+        "type": "modbus-read",
+        "z": "bdd730e0.d2838",
+        "name": "PHASE RELAY INPUT 2",
+        "showStatusActivities": false,
+        "unitid": "",
+        "dataType": "Input",
+        "adr": "0",
+        "quantity": "1",
+        "rate": "3",
+        "rateUnit": "s",
+        "server": "2dd25fbb.78a8",
+        "x": 221.7730484008789,
+        "y": 191.92852783203125,
+        "wires": [
+            [
+                "e569dc7b.c726c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "482a8f0c.3e72",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "global get blwr",
+        "func": "if (global.get ('blwr') <= 2 && \nglobal.get ('blwr') >0) {\nmsg.payload = 1;\nreturn msg;\n} else\nmsg.payload = 0;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 353.77386474609375,
+        "y": 1529.3690032958984,
+        "wires": [
+            [
+                "9fe9112f.db28b"
+            ]
+        ]
+    },
+    {
+        "id": "7d40f097.1041f",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "Inject once at start",
+        "topic": "",
+        "payload": "",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "x": 81.0714111328125,
+        "y": 1271.2142372131348,
+        "wires": [
+            [
+                "3de79dc0.dc75e2"
+            ]
+        ]
+    },
+    {
+        "id": "9fe9112f.db28b",
+        "type": "switch",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 540.5357055664062,
+        "y": 1529.8927459716797,
+        "wires": [
+            [
+                "f53cc559.91bea8"
+            ],
+            [
+                "f53cc559.91bea8",
+                "d524ae58.a6c82"
+            ]
+        ]
+    },
+    {
+        "id": "f53cc559.91bea8",
+        "type": "rbe",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "x": 776.3451385498047,
+        "y": 1585.7975185939245,
+        "wires": [
+            [
+                "d524ae58.a6c82"
+            ]
+        ]
+    },
+    {
+        "id": "de88bae2.be7968",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "global get blwr",
+        "func": "if (global.get ('blwr') === 2 ) {\nmsg.payload = 1;\nreturn msg;\n} else\nmsg.payload = 0;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 538.3452758789062,
+        "y": 1390.3689422607422,
+        "wires": [
+            [
+                "5b84e75a.b73758"
+            ]
+        ]
+    },
+    {
+        "id": "5b84e75a.b73758",
+        "type": "switch",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 732.9166870117188,
+        "y": 1416.226303100586,
+        "wires": [
+            [
+                "b32f22e1.ebb1"
+            ],
+            [
+                "b32f22e1.ebb1",
+                "758f5cc7.a69184"
+            ]
+        ]
+    },
+    {
+        "id": "b32f22e1.ebb1",
+        "type": "rbe",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "x": 807.6310424804688,
+        "y": 1484.7976531982422,
+        "wires": [
+            [
+                "758f5cc7.a69184"
+            ]
+        ]
+    },
+    {
+        "id": "a7989ca7.35915",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "global get ballvalve",
+        "func": "if (global.get ('ballvalve') == 1 ) {\nmsg.payload = 1;\nreturn msg;\n} else\nmsg.payload = 0;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 555.7738647460938,
+        "y": 1340.3690032958984,
+        "wires": [
+            [
+                "7d26ab11.3ed5b4"
+            ]
+        ]
+    },
+    {
+        "id": "7d26ab11.3ed5b4",
+        "type": "switch",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 731.3926773071289,
+        "y": 1347.2738189697266,
+        "wires": [
+            [
+                "e59d3ca6.c9683"
+            ],
+            [
+                "89c13037.dd0c3"
+            ]
+        ]
+    },
+    {
+        "id": "e0eb4feb.624b4",
+        "type": "trigger",
+        "z": "bdd730e0.d2838",
+        "op1": "",
+        "op2": "ddd",
+        "op1type": "nul",
+        "op2type": "str",
+        "duration": "1",
+        "extend": false,
+        "units": "s",
+        "reset": "99",
+        "name": "",
+        "x": 133.77386474609375,
+        "y": 1451.690414428711,
+        "wires": [
+            [
+                "549e9e11.b739a",
+                "482a8f0c.3e72",
+                "1885b471.d6ff1c",
+                "c85fbaf3.d98408"
+            ]
+        ]
+    },
+    {
+        "id": "3de79dc0.dc75e2",
+        "type": "delay",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 116.59527587890625,
+        "y": 1392.4761199951172,
+        "wires": [
+            [
+                "e0eb4feb.624b4"
+            ]
+        ]
+    },
+    {
+        "id": "549e9e11.b739a",
+        "type": "delay",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 119.84527587890625,
+        "y": 1549.9761810302734,
+        "wires": [
+            [
+                "e0eb4feb.624b4"
+            ]
+        ]
+    },
+    {
+        "id": "e59d3ca6.c9683",
+        "type": "trigger",
+        "z": "bdd730e0.d2838",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "num",
+        "op2type": "num",
+        "duration": "3",
+        "extend": true,
+        "units": "s",
+        "reset": "99",
+        "name": "valve off delay",
+        "x": 722.6782913208008,
+        "y": 1295.6545399257116,
+        "wires": [
+            [
+                "89c13037.dd0c3"
+            ]
+        ]
+    },
+    {
+        "id": "89c13037.dd0c3",
+        "type": "modbus-write",
+        "z": "bdd730e0.d2838",
+        "name": "Water Valve: Y3",
+        "showStatusActivities": false,
+        "unitid": "",
+        "dataType": "HoldingRegister",
+        "adr": "2",
+        "quantity": "1",
+        "server": "2dd25fbb.78a8",
+        "x": 1052.4562759399414,
+        "y": 1270.2895488739014,
+        "wires": [
+            [
+                "a3003b5f.2e86f8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "758f5cc7.a69184",
+        "type": "modbus-write",
+        "z": "bdd730e0.d2838",
+        "name": "Aux Relay: Y2",
+        "showStatusActivities": false,
+        "unitid": "",
+        "dataType": "HoldingRegister",
+        "adr": "1",
+        "quantity": "1",
+        "server": "2dd25fbb.78a8",
+        "x": 993.0753517150879,
+        "y": 1377.5277336665563,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "d524ae58.a6c82",
+        "type": "modbus-write",
+        "z": "bdd730e0.d2838",
+        "name": "Motor  Y1 ",
+        "showStatusActivities": false,
+        "unitid": "",
+        "dataType": "HoldingRegister",
+        "adr": "0",
+        "quantity": "1",
+        "server": "2dd25fbb.78a8",
+        "x": 1000.2658081054688,
+        "y": 1530.4324798583984,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "1885b471.d6ff1c",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "global get test or  demo mode",
+        "func": "if (global.get ('test_mode') ===1) { \nmsg.payload = 1;\nreturn msg;} \nelse\nif (global.get ('demo_mode')===1) {\nmsg.payload = 1;\nreturn msg;}\nelse\nmsg.payload = 0;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 359.93255615234375,
+        "y": 1429.956283569336,
+        "wires": [
+            [
+                "afaae2dd.5d433"
+            ]
+        ]
+    },
+    {
+        "id": "afaae2dd.5d433",
+        "type": "switch",
+        "z": "bdd730e0.d2838",
+        "name": "switch",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 278.02783203125,
+        "y": 1351.5017547607422,
+        "wires": [
+            [],
+            [
+                "a7989ca7.35915",
+                "de88bae2.be7968"
+            ]
+        ]
+    },
+    {
+        "id": "43031b61.504214",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 775.7896022796631,
+        "y": 1250.3371399470739,
+        "wires": [
+            [
+                "89c13037.dd0c3"
+            ]
+        ]
+    },
+    {
+        "id": "94a6b802.a7eae8",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "Replace with Conveyor Output",
+        "active": false,
+        "console": "false",
+        "complete": "payload",
+        "x": 1220.4325942993164,
+        "y": 1703.5879515239171,
+        "wires": []
+    },
+    {
+        "id": "c85fbaf3.d98408",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "global get conveyor_check",
+        "func": "if (global.get ('conveyor_check') ===1) {\nmsg.payload = 1;\nreturn msg;\n} else\nmsg.payload = 0;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 395.9325408935547,
+        "y": 1608.5879849025182,
+        "wires": [
+            [
+                "81a3d224.ffd99"
+            ]
+        ]
+    },
+    {
+        "id": "81a3d224.ffd99",
+        "type": "switch",
+        "z": "bdd730e0.d2838",
+        "name": "switch",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 470.4563446044922,
+        "y": 1681.1333950587682,
+        "wires": [
+            [
+                "d2b07af1.567788"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "73f10284.7ca44c",
+        "type": "switch",
+        "z": "bdd730e0.d2838",
+        "name": "switch",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 812.4563446044922,
+        "y": 1743.1333950587682,
+        "wires": [
+            [
+                "d1beb04c.ebed"
+            ],
+            [
+                "d1beb04c.ebed"
+            ]
+        ]
+    },
+    {
+        "id": "d1beb04c.ebed",
+        "type": "rbe",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "x": 976.9325408935547,
+        "y": 1670.5879849025182,
+        "wires": [
+            [
+                "94a6b802.a7eae8",
+                "68ed80c3.4c229"
+            ]
+        ]
+    },
+    {
+        "id": "d2b07af1.567788",
+        "type": "function",
+        "z": "bdd730e0.d2838",
+        "name": "global get conveyor",
+        "func": "if (global.get ('conveyor') == 1 ) {\nmsg.payload = 1;\nreturn msg;\n} else\nmsg.payload = 0;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 645.9325408935547,
+        "y": 1690.5879849025182,
+        "wires": [
+            [
+                "73f10284.7ca44c"
+            ]
+        ]
+    },
+    {
+        "id": "68ed80c3.4c229",
+        "type": "modbus-write",
+        "z": "bdd730e0.d2838",
+        "name": "Conveyor",
+        "showStatusActivities": false,
+        "unitid": "",
+        "dataType": "HoldingRegister",
+        "adr": "3",
+        "quantity": "1",
+        "server": "2dd25fbb.78a8",
+        "x": 1173.9325408935547,
+        "y": 1640.5879849025182,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a3003b5f.2e86f8",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 1304.7513008117676,
+        "y": 1291.4565418788366,
+        "wires": []
+    },
+    {
+        "id": "b04bad13.f726d",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 843.4437386989591,
+        "y": 1866.4442595073153,
+        "wires": [
+            [
+                "68ed80c3.4c229"
+            ]
+        ]
+    },
+    {
+        "id": "419dd2d9.a2636c",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 829.4664437770841,
+        "y": 1952.43864427294,
+        "wires": [
+            [
+                "68ed80c3.4c229"
+            ]
+        ]
+    },
+    {
+        "id": "6ac57644.c74758",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 640.6084976196289,
+        "y": 1488.3136595317296,
+        "wires": [
+            [
+                "d524ae58.a6c82"
+            ]
+        ]
+    },
+    {
+        "id": "433cd627.9c6778",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 636.6084804534912,
+        "y": 1453.64721093859,
+        "wires": [
+            [
+                "d524ae58.a6c82"
+            ]
+        ]
+    },
+    {
+        "id": "3c63ca9.9b6da36",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 771.7895851135254,
+        "y": 1215.6706913539342,
+        "wires": [
+            [
+                "89c13037.dd0c3"
+            ]
+        ]
+    },
+    {
+        "id": "cc7767e6.7d2a28",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 795.6942253112793,
+        "y": 1170.6228102275304,
+        "wires": [
+            [
+                "758f5cc7.a69184"
+            ]
+        ]
+    },
+    {
+        "id": "81a26b65.620388",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 831.7419281005859,
+        "y": 1130.480005128043,
+        "wires": [
+            [
+                "758f5cc7.a69184"
+            ]
+        ]
+    },
+    {
+        "id": "c8b3b5d3.857e38",
+        "type": "modbus-read",
+        "z": "bdd730e0.d2838",
+        "name": "Array PS1& PS2",
+        "showStatusActivities": false,
+        "unitid": "",
+        "dataType": "HoldingRegister",
+        "adr": "29",
+        "quantity": "2",
+        "rate": "1",
+        "rateUnit": "s",
+        "server": "2dd25fbb.78a8",
+        "x": 458.5714111328125,
+        "y": 719.1190032958984,
+        "wires": [
+            [
+                "b42b2395.b7cbd",
+                "42d83937.e86548"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "fe60bb51.80b478",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "topic": "",
+        "payload": "101",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "x": 530,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5f4a145e.8785dc",
+        "type": "modbus-read",
+        "z": "bdd730e0.d2838",
+        "name": "DS60-1",
+        "topic": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "unitid": "",
+        "dataType": "HoldingRegister",
+        "adr": "59",
+        "quantity": "1",
+        "rate": "1",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "server": "2dd25fbb.78a8",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "x": 410,
+        "y": 600,
+        "wires": [
+            [
+                "f479d62b.98a098"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f479d62b.98a098",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 630,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "70837904.50e7b8",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "false",
+        "x": 630,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "418533bd.b870dc",
+        "type": "modbus-write",
+        "z": "bdd730e0.d2838",
+        "name": "DS59-1",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "unitid": "",
+        "dataType": "HoldingRegister",
+        "adr": "58",
+        "quantity": "1",
+        "server": "2dd25fbb.78a8",
+        "x": 400,
+        "y": 660,
+        "wires": [
+            [
+                "e194660b.cc6938"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "63f7134f.abfaec",
+        "type": "inject",
+        "z": "bdd730e0.d2838",
+        "name": "1",
+        "topic": "",
+        "payload": "102",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 230,
+        "y": 620,
+        "wires": [
+            [
+                "418533bd.b870dc"
+            ]
+        ]
+    },
+    {
+        "id": "e194660b.cc6938",
+        "type": "debug",
+        "z": "bdd730e0.d2838",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "complete": "false",
+        "x": 650,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "de4c253d.c32b98",
+        "type": "modbus-read",
+        "z": "bdd730e0.d2838",
+        "name": "DS80-1",
+        "topic": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "79",
+        "quantity": "1",
+        "rate": "1",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "server": "77617b1e.1daff4",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "x": 390,
+        "y": 540,
+        "wires": [
+            [
+                "70837904.50e7b8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e785a11e.7bf2d",
+        "type": "modbus-read",
+        "z": "bdd730e0.d2838",
+        "name": "DS70-1",
+        "topic": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "69",
+        "quantity": "1",
+        "rate": "1",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "server": "2dd25fbb.78a8",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "x": 410,
+        "y": 380,
+        "wires": [
+            [
+                "70837904.50e7b8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f201bfd.ec1fb4",
+        "type": "modbus-read",
+        "z": "bdd730e0.d2838",
+        "name": "DS61-1",
+        "topic": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "60",
+        "quantity": "1",
+        "rate": "1",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "server": "2dd25fbb.78a8",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "x": 410,
+        "y": 320,
+        "wires": [
+            [
+                "70837904.50e7b8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2dd25fbb.78a8",
+        "type": "modbus-client",
+        "z": "",
+        "name": "",
+        "clienttype": "serial",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB0",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "38400",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "odd",
+        "serialConnectionDelay": "100",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectTimeout": 2000
+    },
+    {
+        "id": "77617b1e.1daff4",
+        "type": "modbus-client",
+        "z": "",
+        "name": "",
+        "clienttype": "serial",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyS0",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "odd",
+        "serialConnectionDelay": "100",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectTimeout": "2000"
+    }
+]

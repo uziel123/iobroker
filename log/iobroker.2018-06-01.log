@@ -1,0 +1,4 @@
+2018-06-01 19:37:22.474  - [32minfo[39m: host.iobroker-Default-string Delete log file iobroker.2018-05-26.log
+2018-06-01 20:37:24.890  - [32minfo[39m: admin.0 Request actual repository...
+2018-06-01 20:37:24.897  - [32minfo[39m: host.iobroker-Default-string Update repository "default" under "http://download.iobroker.net/sources-dist.json"
+2018-06-01 20:37:26.269  - [32minfo[39m: admin.0 Repository received successfully.

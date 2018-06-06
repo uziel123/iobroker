@@ -1,0 +1,115 @@
+2018-06-05 20:41:24.475  - [32minfo[39m: host.iobroker-Default-string iobroker.js-controller version 1.4.2 js-controller starting
+2018-06-05 20:41:24.480  - [32minfo[39m: host.iobroker-Default-string Copyright (c) 2014-2018 bluefox, 2014 hobbyquaker
+2018-06-05 20:41:24.480  - [32minfo[39m: host.iobroker-Default-string hostname: iobroker-Default-string, node: v8.11.2
+2018-06-05 20:41:24.483  - [32minfo[39m: host.iobroker-Default-string ip addresses: 
+2018-06-05 20:41:24.598  - [32minfo[39m: host.iobroker-Default-string  inMem-states listening on port 9000
+2018-06-05 20:41:24.714  - [32minfo[39m: host.iobroker-Default-string  inMem-objects listening on port 9001
+2018-06-05 20:41:24.729  - [32minfo[39m: host.iobroker-Default-string InMemoryDB connected
+2018-06-05 20:41:24.739  - [32minfo[39m: host.iobroker-Default-string 29 instances found
+2018-06-05 20:41:24.753  - [32minfo[39m: host.iobroker-Default-string starting 25 instances
+2018-06-05 20:41:24.813  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.admin.0 started with pid 1250
+2018-06-05 20:41:27.117  - [32minfo[39m: admin.0 starting. Version 3.3.5 in /opt/iobroker/node_modules/iobroker.admin, node: v8.11.2
+2018-06-05 20:41:27.197  - [32minfo[39m: admin.0 requesting all states
+2018-06-05 20:41:27.199  - [32minfo[39m: admin.0 requesting all objects
+2018-06-05 20:41:27.451  - [32minfo[39m: admin.0 Request actual repository...
+2018-06-05 20:41:27.527  - [32minfo[39m: admin.0 received all states
+2018-06-05 20:41:27.696  - [32minfo[39m: admin.0 received all objects
+2018-06-05 20:41:28.099  - [32minfo[39m: admin.0 https server listening on port 8081
+2018-06-05 20:41:28.100  - [32minfo[39m: admin.0 Use link "https://localhost:8081" to configure.
+2018-06-05 20:41:28.145  - [32minfo[39m: host.iobroker-Default-string Update repository "default" under "http://download.iobroker.net/sources-dist.json"
+2018-06-05 20:41:28.762  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.web.0 started with pid 1908
+2018-06-05 20:41:29.718  - [32minfo[39m: web.0 starting. Version 2.3.2 in /opt/iobroker/node_modules/iobroker.web, node: v8.11.2
+2018-06-05 20:41:30.046  - [32minfo[39m: web.0 socket.io server listening on port 8082
+2018-06-05 20:41:30.049  - [32minfo[39m: web.0 http server listening on port 8082
+2018-06-05 20:41:33.654  - [32minfo[39m: vis.0 starting. Version 1.1.4 in /opt/iobroker/node_modules/iobroker.vis, node: v8.11.2
+2018-06-05 20:41:34.338  - [32minfo[39m: vis.0 vis license is OK.
+2018-06-05 20:41:34.816  - [32minfo[39m: web.0  Connected system.user.admin from ::1
+2018-06-05 20:41:35.033  - [32minfo[39m: admin.0 Repository received successfully.
+2018-06-05 20:41:36.762  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.node-red.0 started with pid 1947
+2018-06-05 20:41:36.847  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.vis.0 terminated while should be started once
+2018-06-05 20:41:37.479  - [32minfo[39m: node-red.0 starting. Version 1.5.1 in /opt/iobroker/node_modules/iobroker.node-red, node: v8.11.2
+2018-06-05 20:41:37.544  - [32minfo[39m: node-red.0 Starting node-red: --max-old-space-size=128 /opt/iobroker/node_modules/node-red/red.js -v --settings /opt/iobroker/iobroker-data/node-red/settings.js
+2018-06-05 20:41:40.769  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.history.0 started with pid 1983
+2018-06-05 20:41:41.501  - [32minfo[39m: history.0 starting. Version 1.7.4 in /opt/iobroker/node_modules/iobroker.history, node: v8.11.2
+2018-06-05 20:41:43.559  - [33mwarn[39m: node-red.0 5 Jun 20:41:43 - [warn] ------------------------------------------------------
+
+2018-06-05 20:41:43.560  - [33mwarn[39m: node-red.0 5 Jun 20:41:43 - [warn] [node-red/rpi-gpio] Info : Ignoring Raspberry Pi specific node
+
+2018-06-05 20:41:43.560  - [33mwarn[39m: node-red.0 5 Jun 20:41:43 - [warn] ------------------------------------------------------
+
+2018-06-05 20:41:43.562  - [33mwarn[39m: node-red.0 5 Jun 20:41:43 - [warn] Projects disabled : set editorTheme.projects.enabled=true to enable
+
+2018-06-05 20:41:44.762  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.fullcalendar.0 started with pid 1993
+2018-06-05 20:41:45.471  - [32minfo[39m: fullcalendar.0 starting. Version 0.2.4 in /opt/iobroker/node_modules/iobroker.fullcalendar, node: v8.11.2
+2018-06-05 20:41:48.773  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.modbus.0 started with pid 2003
+2018-06-05 20:41:49.465  - [32minfo[39m: modbus.0 starting. Version 1.1.1 in /opt/iobroker/node_modules/iobroker.modbus, node: v8.11.2
+2018-06-05 20:41:49.792  - [32minfo[39m: modbus.0 Connected to slave
+2018-06-05 20:41:54.805  - [33mwarn[39m: modbus.0 Error: undefined
+2018-06-05 20:41:54.811  - [33mwarn[39m: modbus.0 Poll error count: 1 code: {"err":"timeout"}
+2018-06-05 20:41:55.807  - [32minfo[39m: modbus.0 Disconnected from slave 127.0.0.1
+2018-06-05 20:42:01.018  - [33mwarn[39m: modbus.0 Poll error count: 2 code: "App Timeout"
+2018-06-05 20:42:09.467  - [32minfo[39m: vis-google-fonts.0 starting. Version 0.1.0 in /opt/iobroker/node_modules/iobroker.vis-google-fonts, node: v8.11.2
+2018-06-05 20:42:10.008  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.vis-google-fonts.0 terminated while should be started once
+2018-06-05 20:42:55.816  - [32minfo[39m: modbus.0 Connected to slave
+2018-06-05 20:43:00.823  - [33mwarn[39m: modbus.0 Error: undefined
+2018-06-05 20:43:00.825  - [33mwarn[39m: modbus.0 Poll error count: 3 code: {"err":"timeout"}
+2018-06-05 20:43:01.825  - [32minfo[39m: modbus.0 Disconnected from slave 127.0.0.1
+2018-06-05 20:43:07.030  - [33mwarn[39m: modbus.0 Poll error count: 4 code: "App Timeout"
+2018-06-05 20:44:01.830  - [32minfo[39m: modbus.0 Connected to slave
+2018-06-05 20:44:06.834  - [33mwarn[39m: modbus.0 Error: undefined
+2018-06-05 20:44:06.835  - [33mwarn[39m: modbus.0 Poll error count: 5 code: {"err":"timeout"}
+2018-06-05 20:44:07.835  - [32minfo[39m: modbus.0 Disconnected from slave 127.0.0.1
+2018-06-05 20:44:13.042  - [33mwarn[39m: modbus.0 Poll error count: 6 code: "App Timeout"
+2018-06-05 20:45:07.841  - [32minfo[39m: modbus.0 Connected to slave
+2018-06-05 20:45:12.847  - [33mwarn[39m: modbus.0 Error: undefined
+2018-06-05 20:45:12.847  - [33mwarn[39m: modbus.0 Poll error count: 7 code: {"err":"timeout"}
+2018-06-05 20:45:13.849  - [32minfo[39m: modbus.0 Disconnected from slave 127.0.0.1
+2018-06-05 20:45:19.055  - [33mwarn[39m: modbus.0 Poll error count: 8 code: "App Timeout"
+2018-06-05 20:46:13.860  - [32minfo[39m: modbus.0 Connected to slave
+2018-06-05 20:46:18.867  - [33mwarn[39m: modbus.0 Error: undefined
+2018-06-05 20:46:18.867  - [33mwarn[39m: modbus.0 Poll error count: 9 code: {"err":"timeout"}
+2018-06-05 20:46:19.868  - [32minfo[39m: modbus.0 Disconnected from slave 127.0.0.1
+2018-06-05 20:46:25.071  - [33mwarn[39m: modbus.0 Poll error count: 10 code: "App Timeout"
+2018-06-05 20:47:19.871  - [32minfo[39m: modbus.0 Connected to slave
+2018-06-05 20:47:24.878  - [33mwarn[39m: modbus.0 Error: undefined
+2018-06-05 20:47:24.879  - [33mwarn[39m: modbus.0 Poll error count: 11 code: {"err":"timeout"}
+2018-06-05 20:47:25.879  - [32minfo[39m: modbus.0 Disconnected from slave 127.0.0.1
+2018-06-05 20:47:31.086  - [33mwarn[39m: modbus.0 Poll error count: 12 code: "App Timeout"
+2018-06-05 20:48:25.888  - [32minfo[39m: modbus.0 Connected to slave
+2018-06-05 20:48:30.891  - [33mwarn[39m: modbus.0 Error: undefined
+2018-06-05 20:48:30.892  - [33mwarn[39m: modbus.0 Poll error count: 13 code: {"err":"timeout"}
+2018-06-05 20:48:30.893  - [31merror[39m: modbus.0 Reconnect did not help, restart adapter
+2018-06-05 20:48:31.893  - [32minfo[39m: modbus.0 Disconnected from slave 127.0.0.1
+2018-06-05 20:49:31.907  - [32minfo[39m: modbus.0 Connected to slave
+2018-06-05 20:49:36.911  - [33mwarn[39m: modbus.0 Poll error count: 14 code: {"err":"timeout"}
+2018-06-05 20:49:36.912  - [31merror[39m: modbus.0 Reconnect did not help, restart adapter
+2018-06-05 21:16:42.976  - [32minfo[39m: admin.0 successful connection to socket.io from ::ffff:192.168.1.10
+2018-06-05 21:20:36.989  - [32minfo[39m: admin.0 successful connection to socket.io from ::ffff:192.168.1.10
+2018-06-05 21:28:08.604  - [32minfo[39m: admin.0 successful connection to socket.io from ::ffff:192.168.1.10
+2018-06-05 21:28:13.592  - [32minfo[39m: web.0  Connected system.user.admin from ::ffff:192.168.1.10
+2018-06-05 21:41:24.473  - [32minfo[39m: host.iobroker-Default-string Delete log file iobroker.2018-05-27.log
+2018-06-05 21:41:24.473  - [32minfo[39m: host.iobroker-Default-string Delete log file iobroker.2018-05-28.log
+2018-06-05 21:41:24.474  - [32minfo[39m: host.iobroker-Default-string Delete log file iobroker.2018-05-29.log
+2018-06-05 21:46:49.823  - [32minfo[39m: admin.0 successful connection to socket.io from ::ffff:192.168.1.10
+2018-06-05 21:46:54.489  - [32minfo[39m: admin.0 successful connection to socket.io from ::ffff:192.168.1.10
+2018-06-05 21:46:55.592  - [32minfo[39m: admin.0 successful connection to socket.io from ::ffff:192.168.1.10
+2018-06-05 21:47:07.692  - [32minfo[39m: admin.0 successful connection to socket.io from ::ffff:192.168.1.10
+2018-06-05 21:47:19.108  - [32minfo[39m: host.iobroker-Default-string object change system.adapter.web.0
+2018-06-05 21:47:19.111  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.web.0
+2018-06-05 21:47:19.111  - [32minfo[39m: host.iobroker-Default-string stopInstance system.adapter.web.0 killing pid 1908
+2018-06-05 21:47:19.113  - [32minfo[39m: web.0 terminating http server on port 8082
+2018-06-05 21:47:19.114  - [32minfo[39m: web.0 terminated http server on port 8082
+2018-06-05 21:47:19.118  - [32minfo[39m: web.0 terminating
+2018-06-05 21:47:19.133  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.web.0 terminated with code 0 (OK)
+2018-06-05 21:47:21.627  - [32minfo[39m: host.iobroker-Default-string instance system.adapter.web.0 started with pid 6528
+2018-06-05 21:47:22.524  - [32minfo[39m: web.0 starting. Version 2.3.2 in /opt/iobroker/node_modules/iobroker.web, node: v8.11.2
+2018-06-05 21:47:22.819  - [32minfo[39m: web.0 Secure socket.io server listening on port 8082
+2018-06-05 21:47:22.821  - [32minfo[39m: web.0 https server listening on port 8082
+2018-06-05 21:47:37.992  - [32minfo[39m: web.0  Connected system.user.admin from ::ffff:192.168.1.10
+2018-06-05 21:47:44.608  - [32minfo[39m: admin.0 successful connection to socket.io from ::ffff:192.168.1.10
+2018-06-05 21:48:00.887  - [32minfo[39m: admin.0 successful connection to socket.io from ::ffff:192.168.1.10
+2018-06-05 21:48:14.002  - [32minfo[39m: admin.0 successful connection to socket.io from ::ffff:192.168.1.10
+2018-06-05 21:48:35.621  - [32minfo[39m: web.0  Connected system.user.admin from ::ffff:192.168.1.10
+2018-06-05 21:48:57.107  - [32minfo[39m: admin.0 successful connection to socket.io from ::ffff:192.168.1.10
+2018-06-05 21:49:01.481  - [32minfo[39m: admin.0 successful connection to socket.io from ::ffff:192.168.1.10
+2018-06-05 21:50:38.593  - [32minfo[39m: web.0  Connected system.user.admin from ::ffff:192.168.1.10

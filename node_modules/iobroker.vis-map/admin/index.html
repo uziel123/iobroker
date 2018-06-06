@@ -1,0 +1,92 @@
+<html>
+<head>
+<!-- these 4 files always have to be included -->
+<link rel="stylesheet" type="text/css" href="../../lib/css/themes/jquery-ui/redmond/jquery-ui.min.css"/>
+<link rel="stylesheet" type="text/css" href="../../lib/css/jquery.multiselect-1.13.css"/>
+
+<script type="text/javascript" src="../../lib/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+<script type="text/javascript" src="../../lib/js/jquery-ui-1.10.3.full.min.js"></script>
+
+<!-- these two file always have to be included -->
+<link rel="stylesheet" type="text/css" href="../../css/adapter.css"/>
+<script type="text/javascript" src="../../js/translate.js"></script>
+<script type="text/javascript" src="../../js/adapter-settings.js"></script>
+<script type="text/javascript" src="words.js"></script>
+
+<script type="text/javascript">
+    function setValue(id, value, onChange) {
+        var $value = $('#' + id + '.value');
+        if ($value.attr('type') === 'checkbox') {
+            $value.prop('checked', value).change(function() {
+                onChange();
+            });
+        } else {
+            $value.val(value).change(function() {
+                onChange();
+            }).keyup(function() {
+                // Check that only numbers entered
+                if ($(this).hasClass('number')) {
+                    var val = $(this).val();
+                    if (val) {
+                        var newVal = '';
+                        for (var i = 0; i < val.length; i++) {
+                            if (val[i] >= '0' && val[i] <= '9') {
+                                newVal += val[i];
+                            }
+                        }
+
+                        if (val != newVal) $(this).val(newVal);
+                    }
+                }
+                $(this).trigger('change');
+            });
+        }
+    }
+
+    function load(settings, onChange) {
+        if (!settings) return;
+
+        for (var key in settings) {
+            if (settings.hasOwnProperty(key)) {
+                setValue(key, settings[key], onChange);
+            }
+        }
+
+        onChange(false);
+    }
+
+    function save(callback) {
+        var settings = {};
+        $('.value').each(function () {
+            var $this = $(this);
+            var id = $this.attr('id');
+
+            if ($this.attr('type') === 'checkbox') {
+                settings[id] = $this.prop('checked');
+            } else {
+                settings[id] = $this.val();
+            }
+        });
+
+        callback(settings);
+    }
+</script>
+</head>
+<body>
+<div id="adapter-container">
+    <table><tr>
+        <td><img src="vis-map.png"></td>
+        <td style="padding-top: 20px;padding-left: 10px"><h3 class="translate">Maps Widgets settings</h3></td>
+    </tr></table>
+
+    <table>
+        <tr>
+            <td><label for="googleApiKey" class="translate">Google Map API key:</label></td>
+            <td><input id="googleApiKey" class="value" /></td>
+            <td><a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank" class="translate help">Get the Google API Key</a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
