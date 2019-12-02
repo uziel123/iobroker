@@ -15,7 +15,7 @@
     "iobroker.icons-addictive-flavour-png": "^0.1.0",
     "iobroker.icons-material-png": "^0.1.0",
     "iobroker.icons-ultimate-png": "^1.0.1",
-    "iobroker.js-controller": "^1.4.2",
+    "iobroker.js-controller": "^2.1.1",
     "iobroker.mobile": "^0.4.11",
     "iobroker.modbus": "^1.1.1",
     "iobroker.mqtt": "^1.5.0",
